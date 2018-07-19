@@ -4,6 +4,7 @@ title: HEXO 记录
 categories: 
   - consectetur
   - malesuada
+copyright: true
 tags:
   - semper
   - fermentum

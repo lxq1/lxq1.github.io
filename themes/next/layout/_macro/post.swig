@@ -218,6 +218,27 @@
             <span class="page-pv">{{ theme.busuanzi_count.page_pv_header }}
             <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>{{ theme.busuanzi_count.page_pv_footer }}
             </span>
+			
+			
+			
+		<span class="post-time">
+			&nbsp; | &nbsp;
+			<span class="post-meta-item-icon">
+			<i class="fa fa-calendar-o"></i>
+			</span>
+		<span class="post-meta-item-text">字数统计:</span>
+			<span class="post-count">{{ wordcount(post.content) }}字</span>
+		</span> 
+		<span class="post-time">
+				&nbsp; | &nbsp;
+			 <span class="post-meta-item-icon">
+				 <i class="fa fa-calendar-o"></i>
+			 </span>
+			<span class="post-meta-item-text">阅读时长:</span>
+			 <span class="post-count">{{ min2read(post.content) }}分</span>
+		</span>
+		
+		
           {% endif %}
 
           {% if theme.post_wordcount.wordcount or theme.post_wordcount.min2read %}
@@ -330,10 +351,18 @@
         {{ post.content }}
       {% endif  %}
     </div>
+	
+	
     {#####################}
     {### END POST BODY ###}
     {#####################}
 
+	<div>
+      {% if not is_index %}
+        {% include 'my-copyright.swig' %}
+      {% endif %}
+	</div>
+	
     {% if theme.wechat_subscriber.enabled and not is_index %}
       <div>
         {% include 'wechat-subscriber.swig' %}
@@ -346,11 +375,7 @@
       </div>
     {% endif %}
 
-    {% if theme.post_copyright.enable and not is_index %}
-      <div>
-        {% include 'post-copyright.swig' with { post: post } %}
-      </div>
-    {% endif %}
+  
 
     <footer class="post-footer">
       {% if post.tags and post.tags.length and not is_index %}
