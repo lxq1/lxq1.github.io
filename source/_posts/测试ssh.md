@@ -5,8 +5,8 @@ categories:
   - consectetur
   - malesuada
 tags:
-  - semper
-  - fermentum
+  - github
+  - ssh
 ---
 
 没什么其他事情
