@@ -74,6 +74,8 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+# plugins: 
+  # - hexo-algoliasearch
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -81,15 +83,20 @@ deploy:
 
 # Algolia Search API Key
 algolia:
-  applicationID: TNAM0MBQO1
+  appId: TNAM0MBQO1
   apiKey: ee43da4b92593af483134f1825a1864e
+  adminApiKey: 8364e35a691d52fc9cef285697b7b967
   indexName: blog1
   chunkSize: 5000
-  fields:
-    - title
+  fields: 
+    - content:strip:truncate,0,500
+    - excerpt:strip
+    - excerpt
+    - gallery
+    - photos
     - slug
-    - path
-    - content:strip
+    - tags
+    - title
   
 
 
