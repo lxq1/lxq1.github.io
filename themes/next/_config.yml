@@ -232,7 +232,7 @@ post_meta:
 post_wordcount:
   item_text: true
   wordcount: true
-  min2read: false
+  min2read: true
   totalcount: false
   separated_meta: true
 
@@ -396,7 +396,7 @@ valine:
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-#livere_uid: your uid
+livere_uid: MTAyMC8zODE4NS8xNDcxMw==
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
