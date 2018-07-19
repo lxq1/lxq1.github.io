@@ -83,6 +83,13 @@ deploy:
 algolia:
   applicationID: TNAM0MBQO1
   apiKey: ee43da4b92593af483134f1825a1864e
+  adminApiKey: 8364e35a691d52fc9cef285697b7b967
   indexName: blog1
+  chunkSize: 5000
+  fields:
+    - title
+    - slug
+    - content:strip
+  
 
 
