@@ -27,15 +27,14 @@ override: false
 # For example, you put your favicons into `hexo-site/source/images` directory.
 # Then need to rename & redefine they on any other names, otherwise icons from Next will rewrite your custom icons in Hexo.
 favicon:
-  small: /images/favicon-16x16-next.png
+ # small: /images/favicon-16x16-next.png
   medium: /images/favicon.ico
-  apple_touch_icon: /images/apple-touch-icon-next.png
-  safari_pinned_tab: /images/logo.svg
-  #android_manifest: /images/manifest.json
-  #ms_browserconfig: /images/browserconfig.xml
+ # apple_touch_icon: /images/apple-touch-icon-next.png
+#  safari_pinned_tab: /images/logo.svg
+
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "前之鉴, 分享我所知"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -48,19 +47,19 @@ footer:
   #since: 2015
 
   # Icon between year and copyright info.
-  icon: user
+  #icon: user
 
   # If not defined, will be used `author` from Hexo main config.
-  copyright:
+  copyright: true 
   # -------------------------------------------------------------
   # Hexo link (Powered by Hexo).
-  powered: true
+  #powered: true
 
-  theme:
+  #theme:
     # Theme & scheme info link (Theme - NexT.scheme).
-    enable: true
+ #   enable: true
     # Version info of NexT after scheme info (vX.X.X).
-    version: true
+  #  version: true
   # -------------------------------------------------------------
   # Any custom text can be defined here.
   #custom_text: Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a>
@@ -598,9 +597,9 @@ algolia_search:
   hits:
     per_page: 10
   labels:
-    input_placeholder: Search for Posts
-    hits_empty: "We didn't find any results for the search: ${query}"
-    hits_stats: "${hits} results found in ${time} ms"
+    input_placeholder: 输入关键字
+    hits_empty: "没有找到与「${query}」相关的内容"
+    hits_stats: "${hits}条相关记录，共耗时 ${time} ms"
 
 # Local search
 # Dependencies: https://github.com/flashlab/hexo-generator-search

@@ -5,8 +5,7 @@
 # Site
 title: 前之鉴
 subtitle: 分享我所知
-description:
-keywords:
+description: 每篇技术文章都会亲自实践验证
 author: Forward Lee
 language: zh-Hans
 timezone:
@@ -16,6 +15,7 @@ timezone:
 url: blog.begintoend.com
 root: /
 permalink: :year/:month/:day/:title/
+#permalink: :title.html
 permalink_defaults:
 
 # Directory
@@ -83,12 +83,12 @@ deploy:
 algolia:
   applicationID: TNAM0MBQO1
   apiKey: ee43da4b92593af483134f1825a1864e
-  adminApiKey: 8364e35a691d52fc9cef285697b7b967
   indexName: blog1
   chunkSize: 5000
   fields:
     - title
     - slug
+    - path
     - content:strip
   
 
