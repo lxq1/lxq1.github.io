@@ -1,13 +1,10 @@
 ---
 layout: post
-title: HEXO 记录
+title: HEXO 博客记
 categories: 
-  - consectetur
-  - malesuada
-copyright: true
+  - 软件
 tags:
-  - semper
-  - fermentum
+  - hexo
 ---
 
 ## 日志
