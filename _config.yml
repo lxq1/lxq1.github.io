@@ -18,7 +18,7 @@ permalink: :year/:month/:day/:title/
 #permalink: :title.html
 permalink_defaults:
 
-search: true
+#search: true
 
 # Directory
 source_dir: source
@@ -81,28 +81,28 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 
-algolia:
-  appId: "TNAM0MBQO1"
-  apiKey: "ee43da4b92593af483134f1825a1864e"
-  adminApiKey: "8364e35a691d52fc9cef285697b7b967"
+#algolia:
+ # appId: "TNAM0MBQO1"
+ ## apiKey: "ee43da4b92593af483134f1825a1864e"
+#  adminApiKey: "8364e35a691d52fc9cef285697b7b967"
 #  apiKey: ee43da4b92593af483134f1825a1864e
-  indexName: "hexo"
-  chunkSize: 5000
-  fields: 
-    content:strip:truncate,0,500
-    - excerpt:strip
-    - gallery
-    - permalink
-    - photos
-    - slug
-    - tags
-    - title
+ # indexName: "hexo"
+ # chunkSize: 5000
+ # fields: 
+ #   content:strip:truncate,0,500
+ #   - excerpt:strip
+#    - gallery
+#    - permalink
+#    - photos
+#    - slug
+#    - tags
+#    - title
 
-#search:
-#  path: search.xml
-##  field: post
-#  format: html
-#  limit: 10000
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
   
 
 
