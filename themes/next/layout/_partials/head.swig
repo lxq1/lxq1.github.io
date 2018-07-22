@@ -141,7 +141,7 @@
       author: '{{ theme.duoshuo_info.admin_nickname | default(__('author'))}}'
     },
     algolia: {
-      applicationID: '{{ theme.algolia.applicationID }}',
+      appId: '{{ theme.algolia.appId }}',
       apiKey: '{{ theme.algolia.apiKey }}',
       indexName: '{{ theme.algolia.indexName }}',
       hits: {{ theme.algolia_search.hits | json_encode }},

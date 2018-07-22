@@ -12,11 +12,13 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: blog.begintoend.com
+url: http://blog.haoguangfu.cn/
 root: /
 permalink: :year/:month/:day/:title/
 #permalink: :title.html
 permalink_defaults:
+
+search: true
 
 # Directory
 source_dir: source
@@ -80,18 +82,17 @@ theme: next
 deploy:
 
 algolia:
-  applicationID: TNAM0MBQO1
+  appId: "TNAM0MBQO1"
+  apiKey: "ee43da4b92593af483134f1825a1864e"
+  adminApiKey: "8364e35a691d52fc9cef285697b7b967"
 #  apiKey: ee43da4b92593af483134f1825a1864e
-#  adminApiKey: 8364e35a691d52fc9cef285697b7b967
-  apiKey: ee43da4b92593af483134f1825a1864e
-  indexName: hexo
+  indexName: "hexo"
   chunkSize: 5000
   fields: 
-#    - content:strip:truncate,0,500
+    content:strip:truncate,0,500
     - excerpt:strip
-    - content
-    - excerpt
     - gallery
+    - permalink
     - photos
     - slug
     - tags
