@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.begintoend.com
+url: blog.begintoend.com
 root: /
 permalink: :year/:month/:day/:title/
 #permalink: :title.html
@@ -73,20 +73,35 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: 3hexo
-
-search:
-   path: search.xml
-   field: post
-
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 
+algolia:
+  applicationID: TNAM0MBQO1
+#  apiKey: ee43da4b92593af483134f1825a1864e
+#  adminApiKey: 8364e35a691d52fc9cef285697b7b967
+  apiKey: ee43da4b92593af483134f1825a1864e
+  indexName: hexo
+  chunkSize: 5000
+  fields: 
+#    - content:strip:truncate,0,500
+    - excerpt:strip
+    - content
+    - excerpt
+    - gallery
+    - photos
+    - slug
+    - tags
+    - title
 
-
+#search:
+#  path: search.xml
+##  field: post
+#  format: html
+#  limit: 10000
   
-
 
 
