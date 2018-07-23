@@ -21,7 +21,7 @@
 
   <div class="{{ container_class }} {% block page_class %}{% endblock %}">
     <div class="headband"></div>
-	<a href="https://github.com/lxq1"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a>
+	<a href="https://github.com/lxq1"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://ws1.sinaimg.cn/large/640dde2dly1ftj3fi38scj2045045dfs.jpg" alt="Fork me on GitHub"></a>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"> {%- include '_partials/header.swig' %} </div>
