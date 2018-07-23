@@ -4,6 +4,7 @@ categories: 软件
 tags:
 - linux
 - prefix
+password: 123456
 ---
 
 
