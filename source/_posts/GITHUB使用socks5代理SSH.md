@@ -47,5 +47,16 @@ Host github.com
 
 ## 效果
 
+达到很惊人的速度。
+
+![github代理socks5之后的效果](https://ws1.sinaimg.cn/large/640dde2dly1ftjnfnd2laj20sn0eqagz.jpg)
+
+## 结尾
+
+
+**不提供任何socks5服务器， 不得用于非法活动。本文仅供开发，研究代码使用。**
+
+
+[新博客](blog.haoguangfu.cn)
 
 
