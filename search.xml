@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Eclipse+maven开发Java_web]]></title>
+    <url>%2FEclipse%2Bmaven%E5%BC%80%E5%8F%91Java_web.html</url>
+    <content type="text"></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[记录搭建hexo博客的日志]]></title>
+    <url>%2F%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%97%A5%E5%BF%97.html</url>
+    <content type="text"><![CDATA[记录搭建hexo博客的日志2018年7月18日 第一次接触到hexo博客，看中了它的轻，简优势。 配置了HEXO到腾讯云，效果确实不错，每次都走三步才能更新，觉得太麻烦，当天研究了travis-CI持续集成自动化发布。 开放博客源代码到GitHub的blog-source分支上，build到master分支。 2018年7月19日 上午主要是研究了使用Yu Writer编辑工具连接到Hexo的文件夹。 还有NEXT主题等待配置，加上搜索功能。 添加了来必力评论功能。 2018年7月22日 使用了algolia-search全新插件，么想到还是不能让结果全文显示，算了，暂时不弄了。 algolia0.2.0版本，可以全文搜索，但是结果只能显示标题。 由3hexo的主题换成了next主题。 2018年7月23日 添加了文章头部加密。 整理了自己之前写的全部文章，还需要细致整理优化。 所有的搜索功能都体验了下，不管是algolia低版本和高版本啥的，最后还是决定使用local search ，只因为一点，它的搜索结果可以高亮显示。 2018年7月25日 添加到百度站长和谷歌站点进行SEO引擎优化 更改了标题为“域名+标题”，以前是“日期+标题”。 去除了nest动态粒子效果，占用CPU太高。 添加了博文置顶功能。]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GITHUB使用socks5代理SSH]]></title>
+    <url>%2FGITHUB%E4%BD%BF%E7%94%A8socks5%E4%BB%A3%E7%90%86SSH.html</url>
+    <content type="text"><![CDATA[简介需求 github是非常不错的代码托管平台，相信没有开发者不知道他。 由于特殊原因，github在国内访问速度非常非常慢，基本上不超过20k/s，天啦噜~ 目标 通过利用socks5代理提升github访问速度。环境 Windows 7系统 github 客户端 shadowsocks软件配置 github-http-socks5配置文件1234567// C:\Users\lixq\.gitconfig[user] name = github-name email = github-email[http] proxy = socks5://127.0.0.1:1080 github-ssh-socks5配置文件12345// C:\Users\当前用户\.ssh\configHost github.com ProxyCommand connect -H 127.0.0.1:1080 %h 22 效果达到很惊人的速度。 结尾不提供任何socks5服务器， 不得用于非法活动。本文仅供开发，研究代码使用。 新博客]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>socks5</tag>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GIT多人协同开发服务器搭建]]></title>
+    <url>%2FGIT%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE.html</url>
+    <content type="text"><![CDATA[简介工具GIT是一款免费，开源的版本控制系统，用于敏捷高效管理大小项目。 环境 腾讯云服务器centos6.8 GIT二进制包 目标 根据GIT源码搭建GIT服务器 利用ssh公钥管理多人协同开发 安装依赖包123//源码编译需要很多依赖包，提前安装好yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker 下载GIT12cd /usr/local/src //选择一个下载目录wget https://mirrors.edge.kernel.org/pub/software/scm/git/ 解压和编译1234tar -zvxf git-2.10.0.tar.gzcd git-2.10.0make all prefix=/usr/local/gitmake install prefix=/usr/local/git 配置环境变量1234echo 'export PATH=$PATH:/usr/local/git/bin' &gt;&gt; /etc/bashrcsource /etc/bashrc //生效git --version //查看是否安装成功 创建GIT账户1234567891011useradd -m gituserpasswd gitusersu gitusercdmkdir .sshchmod 700 .ssh// 把开发者的 SSH 公钥添加到这个用户的 authorized_keys 文件中chmod 600 ~/.ssh/authorized_keycat git.pub &gt;&gt; /home/git/.ssh/authorized_keys 初始化GIT1234mkdir -p /data/repositoriescd /data/repositories/ &amp;&amp; git init --bare test.git 配置用户权限12chown -R gituser:gituser /data/repositorieschmod 755 /data/repositories 限制权限不能登录服务器123mkdir /home/gituser/git-shell-commandsvi /etc/passwdgituser:x:500:500::/home/gituser:/usr/local/git/bin/git-shell 使用GIT1234567//建立自己的本地文件夹cd ~ git initgit clone gituser@ip:/data/repositories/test.git 参考地址大型github服务搭建]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+        <tag>Linux</tag>
+        <tag>GIT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo博客搭建1.0版本]]></title>
+    <url>%2FHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA1.0%E7%89%88.html</url>
+    <content type="text"><![CDATA[待补充]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux升级内核]]></title>
+    <url>%2FLinux%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8.html</url>
+    <content type="text"><![CDATA[升级内核查看当前系统版本1234567[root@VM_0_10_centos ~]# more /etc/issueCentOS release 6.9 (Final)Kernel \r on an \m[root@VM_0_10_centos ~]# uname -aLinux VM_0_10_centos 2.6.32-642.6.2.el6.x86_64 #1 SMP Wed Oct 26 06:52:09 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux 导入public key12[root@VM_0_10_centos ~]# rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org 安装ELRepo到CentOS1[root@VM_0_10_centos ~]# rpm -Uvh http://119.163.198.36:1024/elrepo-release-6-8.el6.elrepo.noarch.rpm 安装 kernel-lt（lt=long-term）1[root@VM_0_10_centos ~]# yum --enablerepo=elrepo-kernel install kernel-lt -y 编辑grub.conf文件，修改Grub引导顺序[root@localhost ~]# vim /etc/grub.conf]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>内核</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux安装命令prefix]]></title>
+    <url>%2FLinux%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4prefix.html</url>
+    <content type="text"><![CDATA[摘自：https://zhidao.baidu.com/question/535223201.html 不指定prefix，则可执行文件默认放在/usr /local/bin，库文件默认放在/usr/local/lib，配置文件默认放在/usr/local/etc。其它的资源文件放在/usr /local/share。你要卸载这个程序，要么在原来的make目录下用一次make uninstall（前提是make文件指定过uninstall）,要么去上述目录里面把相关的文件一个个手工删掉。指定prefix，直接删掉一个文件夹就够了。 摘自 ：http://baike.haosou.com/doc/3909580-4103422.html linux安装软件采用源码安装灵活自由，适用于不同的平台，维护也十分方便。 源码的安装一般由3个步骤组成: 配置(configure) 编译(make) 安装(make install) 安装方法： 具体的安装方法一般作者都会给出文档，这里说明配置(configure)的prefix选项 以安装supersparrow-0.0.0为例，我们打算把他安装到目录 /usr/local/supersparrow,于是在supersparrow-0.0.0目录执行带选项的脚本 ./configure –prefix=/usr/local/supersparrow 执行成功后再编译、安装(make，make install);安装完成将自动生成目录supersparrow,而且该软件任何的文档都被复制到这个目录。为什么要指定这个安装目录?是为了以后的维护方便，假如没有用这个选项，安装过程结束后，该软件所需的软件被复制到不同的系统目录下，很难弄清楚到底复制了那些文档、都复制到哪里去了-基本上是一塌糊涂。 用了-prefix选项的另一个好处是卸载软件或移植软件。当某个安装的软件不再需要时，只须简单的删除该安装目录，就能够把软件卸载得干干净净;移植软件只需拷贝整个目录到另外一个机器即可(相同的操作系统)。 一个小选项有这么方便的作用，建议在实际工作中多多使用。]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>prefix</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux查看文件系统的几种办法]]></title>
+    <url>%2FLinux%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%87%A0%E7%A7%8D%E5%8A%9E%E6%B3%95.html</url>
+    <content type="text"><![CDATA[fdisk -l 只能列出硬盘的分区表，容量大小以及分区类型，但是看不到文件系统类型。 df -h 用来查看文件系统磁盘空间使用量的，但是df命令只会列出已经挂载的文件系统信息，对于没有挂载的文件系统是查看不到的。 parted 命令比较强大了， 可以对大于2T的磁盘设备进行分区，已经创建GPT分区。 例如查看/dev/sda的文件系统类型，可以按照如下步骤查看123parted /dev/sda print list]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PI 数据库介绍]]></title>
+    <url>%2FPI%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BB%8B%E7%BB%8D.html</url>
+    <content type="text"><![CDATA[PI实时数据库探索PI简介用途 应用领域 电厂SIS是要求非常严格，数据量非常大的生产环境，如果延迟很高的话，系统这边一个阀门状态没能实时传输，可能安全运行值长就要关闭控制系统，紧急制，产生的损失非常巨大，不能安全的指导下一步行动。 应用场景 PI为管理层打开了一个虚拟窗口，领导可以在电脑上实时监控生产运行状态，实现整个系统的控制与管理。 PI优势 数据存储技术1. 存储算法–分页存储一条32位的浮点数变量的记录平均只需要5个字节？ （V：Value，指变量值；Q：Quality，指数据质量；T：Timestamp，指变量值对应的时间戳） 2. 螺旋们压缩和二次过滤PI数据流的第一道压缩由个接口实现，接口程序调用具有压缩算法的数据发送函数，将数据在发送到PI前进行取舍，其算法基于相邻数据点的时间和数值偏差。经过通过压缩（即没被舍去）的数据发送到Snapshot（中间可以有一道缓存机制）。第二道压缩在Snapshot将数据发送到Archive时进行，以前叫“平行四边形压缩法”，前两年改名叫“旋转门”，一种基于数据点之间斜率来确定数据点取舍的算法。 Archive系统的由多个称为Archive的数据文件组成，一般这些文件都是固定大小的。一个文件写满（并非完全写满，为新插入数据留有一定空间）切换到另外一个文件，如此轮流，当前写的那个文件称为Primary Archive。每个文件都标有数据的起始和结束时间，以方便数据查询。这些文件组成了在线历史数据库，这种实现方法使得客户端在查询在线的无论多久的历史数据，其性能都不会差很多。在线历史数据的保存时间（即不被覆盖）根据所有文件的总容量和数据量决定。同时PI系统还提供历史数据备份恢复功能。实际上备份功能也差不多就是把这些数据文件复制到别的地方放着。 记录：5—-页：1024字节—-块—–文件系统 数据库对比 比较项目 实时数据库 关系数据库 应用领域 电力，化工，石油等生产环境 电商，金融等事务性环境 存储方式 时间序列存储 二维表存储 读写速度 1000000/s 3000/s 磁盘占用 单台服务器–10万点/s– 一年–60G 2400G PI安装PI常规操作1. 搜索点2. 修改点]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+        <tag>PI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[QTTabBar出现的错误]]></title>
+    <url>%2FQTTabBar.html</url>
+    <content type="text"><![CDATA[QTTabBar出现问题 QTTABBAR是一款Windows资源管理器的增强工具，一直使用的好好的，结果昨天打开资源管理器后，发现没法用了，在“资源管理器“–“查看”–“工具栏”里面发现相关功能都是灰色的。 分析问题 想起之前因为小飞机代理的问题，重置过IE的设置，猜测是因为加载项不安全，没有被IE信任而无法加载。 解决问题 打开IE，找到“管理加载项“，果然如下图所示，QTTabBar的相关插件并没有启用，右键启用QTTabBar功能即可。 回到资源管理器，在“查看”–“工具栏”中就可以看到相关功能是可选的了。 根据自己的需求选择后，就可以继续使用了。]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>error</tag>
+        <tag>QTTabBar</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SELinux]]></title>
+    <url>%2FSELinux.html</url>
+    <content type="text"><![CDATA[SELinux查看状态命令12sestatus -v ##如果SELinux status参数为enabled即为开启状态 12getenforce 关闭SELinux方法 临时关闭，不需要重启 12setenforce 0 #设置SELinux 成为permissive模式setenforce 1 设置SELinux 成为enforcing模式 永久关闭，需要重启 123修改/etc/selinux/config 文件将SELINUX=enforcing改为SELINUX=disabled]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>SELinux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[VMware-Linux虚拟机扩容]]></title>
+    <url>%2FVMware-Linux%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%A9%E5%AE%B9.html</url>
+    <content type="text"><![CDATA[部署的环境 RHEL7 1. 查看当前磁盘容量12345678910[root@host-liu lixq]# df -hFilesystem Size Used Avail Use% Mounted on/dev/mapper/rhel-root 4.0G 3.6G 457M 89% /devtmpfs 905M 0 905M 0% /devtmpfs 914M 148K 914M 1% /dev/shmtmpfs 914M 8.8M 905M 1% /runtmpfs 914M 0 914M 0% /sys/fs/cgroup/dev/sda1 497M 119M 379M 24% /boot/dev/sr0 3.5G 3.5G 0 100% /run/media/lixq/RHEL-7.0 Server.x86_64 2. 扩容VMware的磁盘容量 3. 查看分区数量和大小fdisk /dev/sda p ##查看分区数量 n ##增加一个分区 p ##设置主分区 3 ##分区号 扇区大小默认enter就可 t ##修改分区类型 3 ## 选择分区3 8e ## 修改成LVM w ##保存分区 reboot 4.格式化分区[root@host-liu lixq]# mkfs.ext3 /dev/sda3 mke2fs 1.42.9 (28-Dec-2013) Filesystem label= OS type: Linux Block size=4096 (log=2) Fragment size=4096 (log=2) Stride=0 blocks, Stripe width=0 blocks 983040 inodes, 3932160 blocks 196608 blocks (5.00%) reserved for the super user First data block=0 Maximum filesystem blocks=4026531840 120 block groups 32768 blocks per group, 32768 fragments per group 8192 inodes per group Superblock backups stored on blocks: 32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208 Allocating group tables: done Writing inode tables: done Creating journal (32768 blocks): done Writing superblocks and filesystem accounting information: done 5.添加到LVM组 创建物理卷 [root@host-liu lixq]# pvcreate /dev/sda3 WARNING: ext3 signature detected on /dev/sda3 at offset 1080. Wipe it? [y/n] y Wiping ext3 signature on /dev/sda3. Physical volume &quot;/dev/sda3&quot; successfully created 扩展卷组 [root@host-liu lixq]# vgextend /dev/rhel /dev/sda3 Volume group &quot;rhel&quot; successfully extended 查看卷组 [root@host-liu lixq]# vgdisplay --- Volume group --- VG Name rhel System ID Format lvm2 Metadata Areas 2 Metadata Sequence No 4 VG Access read/write VG Status resizable MAX LV 0 Cur LV 2 Open LV 2 Max PV 0 Cur PV 2 Act PV 2 VG Size 19.50 GiB PE Size 4.00 MiB Total PE 4993 Alloc PE / Size 1154 / 4.51 GiB Free PE / Size 3839 / 15.00 GiB VG UUID xC1oFk-D0AD-coM2-vU11-dYBu-4kry-vOtcrl 扩展根分区 -l 块数量 [root@host-liu lixq]# lvextend -L +14G /dev/rhel/root Extending logical volume root to 18.01 GiB Logical volume root successfully resized 刷新根分区的容量 resize2fs /dev/rhel/root ##centos-6使用这个 xfs_growfs /dev/rhel/root ##7版本使用这个 6.扩容成功[root@host-liu /]# df -h Filesystem Size Used Avail Use% Mounted on /dev/mapper/rhel-root 18G 3.6G 15G 20% / devtmpfs 905M 0 905M 0% /dev tmpfs 914M 148K 914M 1% /dev/shm tmpfs 914M 8.8M 905M 1% /run tmpfs 914M 0 914M 0% /sys/fs/cgroup /dev/sda1 497M 119M 379M 24% /boot /dev/sr0 3.5G 3.5G 0 100% /run/media/lixq/RHEL-7.0 Server.x86_64]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+        <tag>VMware</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[VSFTP启动失败-Failed to start Vsftpd ftp daemon]]></title>
+    <url>%2FVSFTP%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5-Failed%20to%20start%20Vsftpd%20ftp%20daemon.html</url>
+    <content type="text"><![CDATA[错误如下123456789[root@host-liu vsftpd]# systemctl status vsftpd.servicevsftpd.service - Vsftpd ftp daemon Loaded: loaded (/usr/lib/systemd/system/vsftpd.service; disabled) Active: failed (Result: exit-code) since Tue 2018-07-03 10:09:23 CST; 2min 3s ago Process: 2600 ExecStart=/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf (code=exited, status=2)Jul 03 10:09:23 host-liu systemd[1]: vsftpd.service: control process exited, code=exited status=2Jul 03 10:09:23 host-liu systemd[1]: Failed to start Vsftpd ftp daemon.Jul 03 10:09:23 host-liu systemd[1]: Unit vsftpd.service entered failed state. 分析原因 上网查找问题解决办法，有人说listen改成NO，但我的配置文件已经是NO了，所以这个方法不行， 有人说端口占用问题，看了一下端口，21-20都是没服务占用，只能想其他办法了， 关闭防火墙和SELinux来测试最好，排除其他干扰因素。 解决办法 一般启动错误肯定是配置文件有问题，我在配置虚拟用户模式的时候，出现了这个问题。 最后清空所有配置文件，然后vi一行一行输入，在重启服务，发现可以用了，可能是自己复制粘贴网上代码的时候，编码格式问题导致了。 如果大家有出现此问题的，可以试试清空配置文件，然后一行行添加下面最简单的配置文件参数来测试。 最简单的配置文件12345678910111213anonymous_enable=NOlocal_enable=YESwrite_enable=YESlocal_umask=022dirmessage_enable=YESxferlog_enable=YESconnect_from_port_20=YESxferlog_std_format=YESlisten=NOlisten_ipv6=YESpam_service_name=vsftpduserlist_enable=YEStcp_wrappers=YES 虚拟用户配置文件12345678910111213141516171819anonymous_enable=NOlocal_enable=YESguest_enable=YESguest_username=virtualallow_writeable_chroot=YESwrite_enable=YESlocal_umask=022dirmessage_enable=YESxferlog_enable=YESconnect_from_port_20=YESxferlog_std_format=YESlisten=NOlisten_ipv6=YESpam_service_name=vsftpd.vuuserlist_enable=YEStcp_wrappers=YESuser_config_dir=/etc/vsftpd/vuser_dir~]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[wordpress搭建]]></title>
+    <url>%2FWordPress.html</url>
+    <content type="text"><![CDATA[WordPresswordpress_db:1234567891011121314image: mysql:latestcontainer_name: wordpress_dbrestart: alwaysports:- 33033:3306volumes: - ./mysql/data:/var/lib/mysqlenvironment: MYSQL_ROOT_PASSWORD: MYSQL_DATABASE: WORDPRESS MYSQL_USER: MYSQL_PASSWORD: docker 运行命令12345678docker run --name wordpress_db -v /mysql/data:/var/lib/mysql \-p 3306:3306 \-e MYSQL_ROOT_PASSWORD= \-e MYSQL_DATABASE: wordpress \-e MYSQL_USER=lxq \-e MYSQL_PASSWORD=lxq1234 \-e MYSQL_ROOT_HOST=% \-d mysql wordpress_php:123456789101112131415161718image: wordpress:fpm-alpinecontainer_name: wordpress_phprestart: alwaysenvironment: WORDPRESS_DB_HOST: wordpress_db:3306 WORDPRESS_DB_NAME: WORDPRESS WORDPRESS_DB_USER: lxq WORDPRESS_DB_PASSWORD: volumes: - ./wordpress:/var/www/htmllinks: - wordpress_db docker 运行命令123456789101112docker run --name wordpress4 -v /wordpress4:/var/www/html \-p 8888:80 \-d wordpress:latest \--link wordpress_db \-e WORDPRESS_DB_HOST: wordpress_db:3306 \-e WORDPRESS_DB_NAME: wordpress \-e WORDPRESS_DB_USER: lxq \-e WORDPRESS_DB_PASSWORD: fpm-alpine]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>wordpress</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Wordpress错误提示:Cookies被阻止或您的浏览器不支持]]></title>
+    <url>%2FWordpress%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BACookies%E8%A2%AB%E9%98%BB%E6%AD%A2%E6%88%96%E6%82%A8%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%8D%E6%94%AF%E6%8C%81.html</url>
+    <content type="text"><![CDATA[出现问题自己刚刚装了wordpress没两天，就出现这个问题，导致后台登录不上。 分析问题升级版本？ 百度查了一下，有的说升级版本，但是刚刚装的最新的版本啊，应该不是这个问题。 设置浏览器安全性？ 打开cookie设置，发现已经设置好了安全性了，应该也不是这个问题。 插件问题？ 进入云主机后台，将plugins的文件夹重新命名其他的，重新刷新浏览器，结果成功进入后台！ 解决问题 将plugins的文件夹重命名后，进入到后台，然后在改回原来的名字即可。]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>error</tag>
+        <tag>wordpress</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[docker学习进度1]]></title>
+    <url>%2Fdocker%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A61.html</url>
+    <content type="text"><![CDATA[CentOS Docker 安装 参考地址 前提条件目前，CentOS 仅发行版本中的内核支持 Docker。 Docker 运行在 CentOS 7 上，要求系统为64位、系统内核版本为 3.10 以上。 Docker 运行在 CentOS-6.5 或更高的版本的 CentOS 上，要求系统为64位、系统内核版本为 2.6.32-431 或者更高版本。 查询版本 1cat /etc/redhat-release 使用 yum 安装1uname -r ##查看内核版本是否符合要求 安装 Docker123yum -y install docker-ioservice docker start #启动 Docker 后台服务 安装Compose123456curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-composechmod +x /usr/local/bin/docker-composedocker-compose up -d #运行yml 测试docker1docker run hello-world 由于本地没有hello-world这个镜像，所以会下载一个hello-world的镜像，并在容器内运行。 镜像加速鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址：http://hub-mirror.c.163.com 12#重启service docker restart Docker Hello WorldDocker 允许你在容器内运行应用程序， 使用 docker run 命令来在容器内运行一个应用程序。 1docker run ubuntu:15.10 /bin/echo &quot;Hello world&quot; #Docker 以 ubuntu15.10 镜像创建一个新容器，然后在容器里执行 bin/echo &quot;Hello world&quot;，然后输出结果。 运行交互式的容器我们通过docker的两个参数 -i -t，让docker运行的容器实现”对话”的能力 1docker run -i -t ubuntu:15.10 /bin/bash ##泓奥云 12docker run centos:6.8 /bin/echo &quot;hello world&quot; ##腾讯云 各个参数解析： -t:在新容器内指定一个伪终端或终端。 -i:允许你对容器内的标准输入 (STDIN) 进行交互。 我们尝试在容器中运行命令 cat /proc/version和ls分别查看当前系统的版本信息和当前目录下的文件列表。 我们可以通过运行exit命令或者使用CTRL+D来退出容器。 启动容器泓奥云1docker run -d ubuntu:15.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot; 腾讯云1docker run -d centos:6.8 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot; 在容器内使用docker logs命令，查看容器内的标准输出 1docker logs ** #填写docker id 停止容器12docker stop ** #填写docker id 运行一个web应用接下来让我们尝试使用 docker 构建一个 web 应用程序。 我们将在docker容器中运行一个 Python Flask 应用来运行一个web应用。 1234docker pull training/webappdocker run -d -P training/webapp python app.py Docker 开放了 5000 端口（默认 Python Flask 端口）映射到主机端口 32769 上。 这时我们可以通过浏览器访问WEB应用 进入容器12docker exec -it &lt;docker_name&gt; /bin/bash 其中，/bin/bash有可能是/bin/sh，因为不一定所有的docker都安装了shell 卸载docker12rpm -e docker-io 卸载Docker后,/var/lib/docker/目录下会保留原Docker的镜像,网络,存储卷等文件. 如果需要全新安装Docker,需要删除/var/lib/docker/目录 1rm -fr /var/lib/docker/ 卸载镜像 删除前需要保证容器是停止的 stop 需要注意删除镜像和容器的命令不一样。 docker rmi ID ,其中 容器(rm) 和 镜像(rmi) 顺序需要先删除容器 1docker rmi 镜像id 修改已经存在的docker容器的映射端口 停止容器 停止docker 进入 /var/lib/docker/containers/ 容器ID的文件夹 修改config.v2.json和hostconfig.json 启动docker 启动容器]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux修改网络配置的几种方法]]></title>
+    <url>%2Flinux%E4%BF%AE%E6%94%B9%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE.html</url>
+    <content type="text"><![CDATA[1234567891011121314151617181920vi /etc/sysconfig/network-scripts/ifcfg-eth0修改 ONBOOT=yes // 计算机启动时是否激活网卡，此处取值yes BOOTPROTO=static // 获取IP的方式，此处取值static添加 IPADDR=192.168.5.233 //IP地址 NETMASK=255.255.255.0 //子网掩码 GATEWAY=192.168.5.254 //网关地址 DNS1=8.8.8.8 DNS2=114.114.114.114service network restart重启网络服务 CentOS7纯净版下配置网络： 1.安装完CentOS7后，root登录进入系统 2.输入ip a回车，查看网卡信息，并记录DEVICE和HWADDR供后续使用 3.输入vi /etc/sysconfig/network-scripts/ifcfg-eno16777736（DEVICE在这里用到） 4.编辑界面按“i”键 修改 ONBOOT=yes BOOTPROTO=static 添加 HWADDR=第2步所做的记录 IPADDR=所设的ip，如：192.168.5.233 PREFIX=24 GATEWAY=192.168.5.254 DNS1=8.8.8.8 DNS2=114.114.114.114 5.按Esc键，输入:wq！保存退出 6.输入service network restart重启网络 7.输入ip a回车查看配置信息是否写入 8.ping本地网络、外网、域名看能否ping通 9.均能ping通后，输入yum install net-tools，可将ifconfig命令找回]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux系统hao启动顺序]]></title>
+    <url>%2Flinux%E7%B3%BB%E7%BB%9Fhao%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F.html</url>
+    <content type="text"><![CDATA[启动 frp.sh 启动http和https内网穿透 临时禁用SELinux 1setenforce 0 docker 启用db数据库 1docker start nextcloud_db docker 启用web 1docker start nextcloud_web docker 启用onlyoffice 1docker start onlyoffice 启用Nginx 1234/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf./nginx -s reload]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>hao</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql学习进度1]]></title>
+    <url>%2Fmysql%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%BA%A61.html</url>
+    <content type="text"><![CDATA[显示所有的数据库12show databases; 1251错误 我的是8.0的版本，因为比较新的mysql采用新的保密方式所以旧的似乎不能用，改密码方式： 12345use mysql；ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;&apos;;FLUSH PRIVILEGES; 这两天用docker搭了个mariadb碰到一些问题在此记录一下。 搭建步骤12345678910111213141516171819202122232425262728293031323334353637383940414243441 docker pull 最新的 mariadb镜像2. 用镜像建立mariadb的 containerdocker run --name mdb1 -v /home/xx/docker_mdb1_data:/var/lib/mysql \-p 13306:3306-e MYSQL_ROOT_PASSWORD=-e MYSQL_USER=xx-e MYSQL_PASSWORD=-e MYSQL_ROOT_HOST=%-d mariadb3.以上步骤完成后mariadb 的 container mdb1 就直接运行了。在此踩了3个坑要注意：1.建立container是要注意SEliunx的限制，本地映射的文件夹 /home/xx/docker_mdb1_data必须关闭SELinux的保护：chcon -Rt svirt_sandbox_file_t /home/xx/docker_mdb1_data2.使用mysql的root连接container时出现Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: NO)的错误，后续的坑也由此引发。在网上查找了一下可能有两个原因一,MYSQL_ROOT_PASSWORD和MYSQL_PASSWORD最好不要相同。二,要添加MYSQL_ROOT_HOST=%的环境变量3.建立container后出现mysql相关系统错误时，比如Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: NO)重新建container的时候必须连外部映射的存储/home/xx/docker_mdb1_data全部删除干净。sudo rm -rf /home/xx/docker_mdb1_data]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[nextcloud网盘搭建过程]]></title>
+    <url>%2Fnextcloud.html</url>
+    <content type="text"><![CDATA[nextcloud先下载镜像关闭selinuxyml配置文件123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354nextcloud-db: image: mariadb container_name: nextcloud_db ports: - 33034:3306 volumes: - /cloud/mysql/data:/var/lib/mysql environment: - MYSQL_ROOT_PASSWORD= - MYSQL_DATABASE=nextcloud - MYSQL_USER=lxq - MYSQL_PASSWORD= - MYSQL_ROOT_HOST=%nextcloud_web: image: wonderfall/nextcloud container_name: nextcloud_web environment: - UID=1000 - GID=1000 - UPLOAD_MAX_SIZE=10G - APC_SHM_SIZE=128M - OPCACHE_MEM_SIZE=128 - CRON_PERIOD=15m - TZ=Aisa/Shanghai - ADMIN_USER=admin - ADMIN_PASSWORD= - DOMAIN=pan.haoguangfu.cn - DB_TYPE=mysql - DB_NAME=nextcloud - DB_USER=lxq - DB_PASSWORD= - DB_HOST=nextcloud-db:3306 volumes: - /cloud/nextcloud/data:/data - /cloud/nextcloud/config:/config - /cloud/nextcloud/apps:/apps2 - /cloud/nextcloud/themes:/nextcloud/themes expose: - 8888 links: - nextcloud-db 重建文件索引12345678cp -r /aria2/data/_dl/. /root/nextcloud/data/lixq/files/video/downrm -rf /aria2/data/_dl/*docker exec -it nextcloud_web shocc files:scan --path=&quot;/lixq/files/video&quot; ##新文件名必须是英文或数字，乱码的话不显示 https://www.orgleaf.com/2400.html]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>nextcloud</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[使用小飞机代理后，去除IE的系统代理]]></title>
+    <url>%2F%E4%BB%A3%E7%90%86%E8%BD%AF%E4%BB%B6%E5%90%8E%EF%BC%8CIE%E7%9A%84lan%E8%AE%BE%E7%BD%AE.html</url>
+    <content type="text"><![CDATA[使用小飞机代理软件后，如何去除IE的强制LAN代理出现问题今天刚刚打开电脑，想浏览下新闻，发现打不开任何网站了，ping www.baidu.com的时候也是通的，说明上网是正常的。 分析问题怀疑是昨天使用了小飞机代理的问题，打开IE的Internet选项，进入到到LAN设置里面，发现如下图所示。 看来还真是代理问题，点击取消，清空里面的地址，点击确定，如此反复操作了好几次，也退出了小飞机，结果仍然还是被代理，难道是被劫持了？ 解决问题用手机上网百度查找解决办法，有说更改注册表，有说卸载小飞机的，有说重置IE的，最后说下我折腾出来的办法吧！ 右键右下角的小飞机图标，选择系统代理模式，先选择“不经过代理直连”，然后在选择“不修改系统代理”，就可以去除IE的lan强制代理按钮了]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>error</tag>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[内网穿透一键搭建]]></title>
+    <url>%2F%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html</url>
+    <content type="text"><![CDATA[下载解压frps123456wget http://ip:8088/frp.tar.gztar -xzf frp.tar.gz./frps -c ./frps.ini 查询版本1cat /etc/redhat-release 关闭防火墙1234#centOSfirewall-cmd --state #查询状态systemctl stop firewalld.service #停止firewallsystemctl disable firewalld.service #禁止firewall开机启动 编辑配置文件1234567vi frps.ini 按键i进行输入状态改配置按键ESC退出输入状态按键:wq!退出保存cat frps.ini #查看]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>frp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[在线协同办公平台搭建]]></title>
+    <url>%2F%E5%9C%A8%E7%BA%BF%E5%8D%8F%E5%90%8C%E5%8A%9E%E5%85%AC%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA.html</url>
+    <content type="text"><![CDATA[collabora office1. 拉取镜像12docker pull collabora/code 2. 启动镜像容器运行命令 1docker run -t -d -p 0.0.0.0:9980:9980 -e &apos;domain=pan\\.haoguangfu\\.cn&apos; -e &quot;username=admin&quot; -e &quot;password=123456&quot; --restart always --cap-add MKNOD collabora/code 测试是否成功安装命令 12https://webhttps.haoguangfu.cn/loleaflet/dist/admin/admin.html Nginx配置文件 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647## collabora office server &#123; listen 443 ssl; server_name webhttps.haoguangfu.cn; ssl_certificate /cloud/nginx/ssl/1_webhttps.haoguangfu.cn_bundle.crt; ssl_certificate_key /cloud/nginx/ssl/2_webhttps.haoguangfu.cn.key; # static files location ^~ /loleaflet &#123; proxy_pass https://localhost:9980; proxy_set_header Host $http_host; &#125; # WOPI discovery URL location ^~ /hosting/discovery &#123; proxy_pass https://localhost:9980; proxy_set_header Host $http_host; &#125; # main websocket location ~ ^/lool/(.*)/ws$ &#123; proxy_pass https://localhost:9980; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection &quot;Upgrade&quot;; proxy_set_header Host $http_host; proxy_read_timeout 36000s; &#125; # download, presentation and image upload location ~ ^/lool &#123; proxy_pass https://localhost:9980; proxy_set_header Host $http_host; &#125; # Admin Console websocket location ^~ /lool/adminws &#123; proxy_pass https://localhost:9980; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection &quot;Upgrade&quot;; proxy_set_header Host $http_host; proxy_read_timeout 36000s; &#125; &#125; 重启docker 服务 1234systemctl daemon-reload启动Nginx onlyoffice1. 拉取镜像12docker pull onlyoffice/documentserver 2. 前期准备1234mkdir -p /cloud/onlyoffice/DocumentServer/logsmkdir -p /cloud/onlyoffice/DocumentServer/datamkdir -p /cloud/onlyoffice/DocumentServer/data/certs #复制证书文件到此文件夹，证书改名onlyoffice 3. 启动容器12docker run -i -t -d -p 9443:443 -v /cloud/onlyoffice/DocumentServer/logs:/var/log/onlyoffice -v /cloud/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data --name onlyoffice onlyoffice/documentserver 4. docker配置文件12345678910111213141516171819202122232425## office server &#123; listen 443 ssl; server_name webhttps.haoguangfu.cn; ssl on; ssl_certificate /cloud/nginx/ssl/1_webhttps.haoguangfu.cn_bundle.crt; ssl_certificate_key /cloud/nginx/ssl/2_webhttps.haoguangfu.cn.key; ssl_session_timeout 1d; ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; ssl_protocols TLSv1 TLSv1.1 TLSv1.2; ssl_prefer_server_ciphers on; location / &#123; proxy_redirect off; proxy_pass https://localhost:9443; proxy_set_header Host $http_host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; &#125; &#125; 4. 重启docker服务123systemctl daemon-reload重启Nginx 5. 测试地址https://服务器地址:9443/ 暂时关闭SELinux 参考引用 collabora office only office]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>collabora office</tag>
+        <tag>onlyoffice</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[多会话管理工具screen]]></title>
+    <url>%2F%E5%A4%9A%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7screen.html</url>
+    <content type="text"><![CDATA[需求以前一直在用frp1.14版本的时候，使用xshell登录运行&amp;命令后，退出后，也是可以稳定运行的，但是升级到frp1.19版本的时候，发现这个&amp;在退出ssh的时候，后台也是直接退出的。 查找从网上寻求后台进程方案。有三种。 1 2 3 &amp; nohup screen 简单，容易失效 无法查看状态 需要安装包，功能强大 screen最后决定采用screen后台进程方案。 引用 1.安装官方网站 123yum install screenrpm -qa | grep screen #查看是否安装完毕 2.使用选项12345678910111213-A 将所有的视窗都调整为目前终端机的大小。-d &lt;作业名称&gt; 将指定的screen作业离线。-h &lt;行数&gt; 指定视窗的缓冲区行数。-m 即使目前已在作业中的screen作业，仍强制建立新的screen作业。-r &lt;作业名称&gt; 恢复离线的screen作业。-R 先试图恢复离线的作业。若找不到离线的作业，即建立新的screen作业。-s 指定建立新视窗时，所要执行的shell。-S &lt;作业名称&gt; 指定screen作业的名称。-v 显示版本信息。-x 恢复之前离线的screen作业。-ls或--list 显示目前所有的screen作业。-wipe 检查目前所有的screen作业，并删除已经无法使用的screen作业。 创建对话1screen -S frpsocks5 查看窗口12ctrl+a w #查看窗口，一般在xshell的标题栏ctrl+a A #为当前窗口命名 会话分离123ctrl+a d #会话分离screen -lsscreen -r id #会话还原 会话清除1screen -wipe 会话关闭1ctrl+a k]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>screen</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安装Java错误1603]]></title>
+    <url>%2F%E5%AE%89%E8%A3%85Java%E9%94%99%E8%AF%AF1603.html</url>
+    <content type="text"><![CDATA[错误情况 以前安装过java1.7，现在想升级到1.8版本，卸载了1.7，但是在安装java1.8的时候，jdk可以顺利安装，额外的jre却频频提示1603错误。 解决办法 jre是由java编写的，会调用java程序来安装，由于以前java1.7的环境变量依然存在，导致jre安装不下去，失败1603。 去环境变量里面把以前配置的java变量删除，然后重启电脑，重新安装即可。]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安装centos系统]]></title>
+    <url>%2F%E5%AE%89%E8%A3%85centOS.html</url>
+    <content type="text"><![CDATA[安装centOS 下载centOS7 64位安装包 虚拟机加载ISO文件 初始化设置 选择最小核心 设置root密码]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>centos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[小米四折腾记]]></title>
+    <url>%2F%E5%B0%8F%E7%B1%B3%E5%9B%9B%E6%8A%98%E8%85%BE%E8%AE%B0.html</url>
+    <content type="text"><![CDATA[小米四折腾记插入miui9图片 插入miui7图片 降级 小米论坛查找降级教程。 下载线刷工具。 下载降级包。 刷三方RE 下载汉化版的3.2TWRY，下载后用手机端刷，提示成功，结果进RE后，还是原版的MI RE，为了解决这个事情真是费时费力。 一遍又一遍的刷，还是重启后还原给MI RE。 最后试了一下英文版的3.0 TWRY，没想到刷完之后可以用了，重启也是TWRY，喜出望外。 刷魔趣ROM降级包]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>手机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[更改rhel为centos源]]></title>
+    <url>%2F%E6%9B%B4%E6%94%B9rhel%E4%B8%BAcentos%E6%BA%90.html</url>
+    <content type="text"><![CDATA[前言虚拟机安装的RHEL 7 64版本，在使用yum安装软件时，提示错误，才知道原来redhat使用yum源是需要收费的。为了继续学习，决定更改yum源。 卸载redhat原来自带的包12345678rpm -qa | grep yum 查询所有yum包rpm -qa|grep yum|xargs rpm -e --nodeps 不管依赖关系直接卸载yum包rpm -qa | grep yum查询为空时，代表卸载成功 下载新的centos的包查看当前系统的版本和位数1234567[root@host-liu yum.repos.d]# cat /etc/issue &amp;&amp; arch\SKernel \r on an \mx86_64[root@host-liu yum.repos.d]# cat /etc/system-releaseRed Hat Enterprise Linux Server release 7.0 (Maipo) 打开地址 http://mirrors.163.com/centos/7/os/x86_64/Packages/ 找到yum、yum-plugin-fastestmirror、yum-metadata-parser、python-urlgrabber这四个软件包下载。 https://www.cnblogs.com/jym1/p/8088005.html]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[校外免费浏览和下载知网论文]]></title>
+    <url>%2F%E7%9F%A5%E7%BD%91.html</url>
+    <content type="text"><![CDATA[校外免费浏览和下载知网论文前言最近研究OpenStack技术，想看看专业知网论文，在网上找的免费账号，但是用的效果不是太好，不是注册太麻烦，就是又得关注微信，又得回复绑定什么的的。今天偶然发现了一个方法，给大家分享一下，用到的是“浙江图书馆”，网址贴出来： www.zjlib.net.cn 。还要结合支付宝。 步骤 首先，支付宝内搜索“浙江图书馆”，找到浙图的生活号，关注，然后进去点“服务”——“服务大厅”——“办理读者证”，然后按步骤输入信息。我办理的是不要押金的那种（其实我也不知道三种有什么区别，反正我就只是为了能上知网），记住自己的密码申请好了以后会有一个证号。 然后去浙图的官网（网页的那个，不是支部宝里的）网址： www.zjlib.net.cn，右上角登录，成功以后拉倒页面最下面，右下角有个“数据库推荐”，找到知网。so happy！！！不得不说，阿里的网络服务在浙江对接的是真好！（主要是我不知道其他省怎么样）。到此结束！ 浙图数据库资源也算比较丰富的，安利一个“书香浙江省图（试用版）”，通过浙图链接过去以后可以免费看书。]]></content>
+      <categories>
+        <category>福利</category>
+      </categories>
+      <tags>
+        <tag>知网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[联系R720装WIN7系统记录]]></title>
+    <url>%2F%E8%81%94%E6%83%B3R720%E8%A3%85WIN7%E7%B3%BB%E7%BB%9F%E8%AE%B0%E5%BD%95.html</url>
+    <content type="text"><![CDATA[联想R720装WIN7系统记录 提醒一句，操作有风险，数据请备份。前言 由于微软的免费正版win10战略，很多电脑商都是自带win10系统，特别是近两年来的新电脑，基本上都是win10系统，给很多小伙伴带来了惊喜（不需要找其他盗版系统激活啥的），同样也带来了苦恼（习惯了win7系统的用户体验）。 现在重装win7系统已经比不上前五年了，那个时候没有那么多分区格式，没有bios改的，一键GHOST直接装，十分钟搞定。 时代在发展，有些笔记本电脑都已经10T硬盘了，mbr格式早已不支持；SATA固态到NVME固态，AHCI控制到RST控制器，硬盘技术更新更快。 升级总是很简单，降级才是最麻烦，IOS也是这样，一步步驱赶着你更新，越来越卡，越来越容易换新手机。 在网上查了很多关于R720装win7的记录，都不是那么完美，那么就让我来做一个自己成功的记录吧。 一句话总结就是“GPT+WIN10——MBR+WIN7+注入NVME驱动” 弯路 原版win7 直接安装，结果在硬盘识别里面找不到驱动，无法安装到NVME固态硬盘中。 GHO安装，开机蓝屏。 其他因为BOOT启动设置啥的，未能成功启动。 简述 下载工具，制作PE盘。 进入 P E， 分区操作。 安装系统，注入驱动。 重启系统，更新补丁。 工具 驱动总裁 微PE工具箱 win7-64系统镜像 8G 优盘一个 PE 啥是pe，一个运行于内存的操作系统，拥有系统的最高权限，想干啥就干啥，进入系统后，没有硬盘也能开机上网的系统。 制作PE优盘 这个很简单，买个U盘，（最好是大品牌，数据稳定性很重要），下载好微PE工具箱，直接打开操作，写入到U盘即可。 1别提什么其他方案，什么HDD，ZIP，FBINST，U+，多分区，不要那么麻烦，默认就行，技术总是趋向于简单化。 制作好之后，直接安全弹出即可。啥，你说暴力拔，不存在的，分分钟让你抓狂。 更改BIOS启动项这是重头戏！ 很多电脑制作商为了bios费劲了苦心，增加了很多新功能，眼花缭乱。比安卓增加了BL锁还恶心。 具体要更改或禁用哪些功能呢？来，直接上图说！ 开始显示logo时，按F2键（具体品牌不同，暂不说那么多，自行谷歌）进入bios，看看这强大的配置。 将控制模式改为AHCI ，在安全页面，把安全启动也禁用了。 将boot mode 改成传统启动，boot priority改为传统优先，pxe boot暂时用不到改成disabled。在最后一个也exit页面中，将OS默认启动禁用了。 到此为止，bios设置好了，禁用了安全启动，改了磁盘控制模式，启动模式和优先级也更改成传统的，禁用默认启动。 磁盘操作 F12进入了pe优盘后，来到了PE操作系统，很强大的系统。 打开DG分区工具，将1T-HD0-硬盘和128G-HD1-固态硬盘，全部删除分区，保存更改。 右键两个硬盘名称，GPT分区表格式更换成MBR。 根据自己的需要进行分区即可，固态不要忘记4K对齐，C盘设置主分区。 最后不要忘记保存更改。 开始系统安装 下载好的系统镜像挂载到模拟光驱中。 用install安装工具安装WIM镜像包，统统选择C盘即可。 安装完成之后，不要立刻重启，否则肯定蓝屏，NVME固态报错7B之类的。 注入驱动 下载好的驱动总裁工具，在PE系统中直接打开。 选择安装所有驱动到C盘即可。 驱动总裁确实很强制，预置安装了网卡，NVME驱动等常用驱动。 开机体验 设置好自己的账号和密码，选择好时间等，直接重启进入就行。 可以看到1T+128G是可以直接识别的。 WIN7专用驱动12主板驱动，显卡驱动都在链接里面，自行下载即可。链接:https://pan.baidu.com/s/1kBEPgRQkU49F_nUrE_J5Xg 密码:j56p]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>win7</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[亲测成功，免费教你领取AppStore12元充值红包]]></title>
+    <url>%2FAppStore.html</url>
+    <content type="text"><![CDATA[亲测成功，免费教你领取AppStore12元充值红包 今天得到一个小羊毛，特来分享给大家，大家好才是真的好！不耽误时间，5分钟搞定！ 给你发个12元红包，领完就能在App Store买视频会员、买游戏装备咯。祝大家红包领的开心！ 亲们一定按照步骤来 第一步：领取7元新人红包支付宝APP中搜索 Apple专区，找到越花月有礼第一个，完成绑定ID、关注的任务，即可得到7元红包。 有的人第一步领不到红包也没有关系，继续第二步就行。 第二步：领取5元邀请红包复制下面的话，打开支付宝。 HrMYsO01A1#吱口令#长按复制此消息，打开支付宝就能领取 第三步：使用红包进行充值 打开支付宝首页，点击右上角“卡包”，查看里面是否有红包，有多少一会充值多少就可以。 打开AppStore，点击头像，点击自己的ID名，进入付款设置，然后更改成支付宝支付，根据提示操作就行。 之后再次打开App Store里面，点击头像，给Apple ID充值，点击“其他” 输入12.01元，实测可做到1分钱冲12.01元。 想给王者荣耀充值，想购买视频会员，或者买app软件，都可以用！]]></content>
+      <categories>
+        <category>福利</category>
+      </categories>
+      <tags>
+        <tag>AppStore</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[路由回环错误]]></title>
+    <url>%2F%E8%B7%AF%E7%94%B1%E5%9B%9E%E7%8E%AF%E9%94%99%E8%AF%AF.html</url>
+    <content type="text"><![CDATA[路由回环错误错误记录 最近在做VMware虚拟机测试，里面运行的CentOS 7系统，配置网卡的过程中出现了如下的错误： 12345[haoserver@localhost ~]$ ping www.baidu.comFrom 119.163.198.36 (119.163.xxx.xx) icmp_seq=27 Redirect Network(New nexthop: gateway (119.163.xxx.xx))From 119.163.198.36 (119.163.xxx.xx): icmp_seq=27 Redirect Network(New nexthop: gateway (119.163.xxx.xx))64 bytes from 61.135.169.125 (61.135.169.125): icmp_seq=27 ttl=56 time=14.1 ms 经过搜索资料，发现是之前在宿主系统的网卡上面开了共享导致。 去除了共享按钮后，再次测试，已经没有错误了。 12345PING www.a.shifen.com (61.135.169.121) 56(84) bytes of data.64 bytes from 61.135.169.121 (61.135.169.121): icmp_seq=1 ttl=56 time=13.4 ms64 bytes from 61.135.169.121 (61.135.169.121): icmp_seq=2 ttl=56 time=13.9 ms64 bytes from 61.135.169.121 (61.135.169.121): icmp_seq=3 ttl=56 time=13.8 ms]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Apache服务器搭建]]></title>
+    <url>%2F%E9%85%8D%E7%BD%AEApache.html</url>
+    <content type="text"><![CDATA[虚拟机全新Linux用源码安装Apache安装方式可以采用源码安装或二进制数据包安装，源码安装是可以定制的一种安装方式，自由度比较高，满足企业对各种环境的不同需求。源码安装需要大量的依赖软件包。 二进制数据包选择rpm包安装，简单快捷。 1. 下载软件包采用wget联网下载以下的源码包 apache apr apr-util 2. 安装软件由于我们采用了源码安装Apache，所以安装Apache Http Server 之前需要安装很多依赖软件包，可以使用yum安装。 1234yum -y install gcc autoconf automake make \&gt; pcre pcre-devel openssl openssl-devel还需要补充上error1的解决办法 12345678910111213141516171819202122232425[root@localhost ~]# tar -xzf httpd-2.4.33.tar.gz -C /usr/src/[root@localhost ~]# tar -xzf apr-1.6.3.tar.gz -C /usr/src[root@localhost ~]# tar -xzf apr-util-1.6.1.tar.gz -C /usr/src/[root@localhost ~]# cd /usr/src/[root@localhost src]# cd apr-1.6.3/[root@localhost apr-1.6.3]# ./configure[root@localhost apr-1.6.3]# make &amp;&amp; make install[root@localhost apr-util-1.6.1]# ./configure --with-apr=/usr/local/apr[root@localhost apr-util-1.6.1]# make &amp;&amp; make install 提示缺少error1[root@localhost src]# cd httpd-2.4.33/[root@localhost httpd-2.4.33]# ./configure --prefix=/usr/local/apache2 --enable-so \&gt; --enable-ssl --enable-rewrite --with-mpm=worker --with-suexec-bin \&gt; --with-apr=/usr/local/apr/[root@localhost httpd-2.4.33]# make &amp;&amp; make install提示error2 3. 启动软件1/usr/local/apache2/bin/apachectl start 配置防火墙 iptable -I INPUT -P tcp –dport 80 -j ACCEPT server iptables save 查看端口是否启用 发生过的错误error1 缺少expat-devel包1234567xml/apr_xml.c:35:19: 致命错误：expat.h：没有那个文件或目录 #include &lt;expat.h&gt; ^编译中断。make[1]: *** [xml/apr_xml.lo] 错误 1make[1]: 离开目录“/usr/src/apr-util-1.6.1”make: *** [all-recursive] 错误 1 解决办法yum install expat-devel error2 [htpasswd] 错误1234567collect2: error: ld returned 1 exit statusmake[2]: *** [htpasswd] 错误 1make[2]: 离开目录“/usr/src/httpd-2.4.33/support”make[1]: *** [all-recursive] 错误 1make[1]: 离开目录“/usr/src/httpd-2.4.33/support”make: *** [all-recursive] 错误 1 解决办法1234567891011121314cd /usr/src/cp -r apr-1.6.3 /usr/src/httpd-2.4.33/srclib/aprcd apr-1.6.3./configure --prefix=/usr/local/aprmake &amp;&amp; make installcp -r apr-util-1.6.1 /usr/local/src/httpd-2.4.33/srclib/apr-utilcd /usr/src/apr-util-1.6.1./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/aprmake &amp;&amp; make installcd /usr/src/httpd-2.4.33./configure --with-included-apr --prefix=/usr/local/apache2 --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util --enable-so --enable-ssl --enable-rewrite --with-mpm=worker --with-suexec-bin make &amp;&amp; make install 写一个相对完美点的全部安装代码12345678910111213141516171819202122yum -y install gcc autoconf automake make \&gt; pcre pcre-devel openssl openssl-devel expat-devel tar -xzf httpd-2.4.33.tar.gz -C /usr/src/ tar -xzf apr-1.6.3.tar.gz -C /usr/src tar -xzf apr-util-1.6.1.tar.gz -C /usr/src/cd /usr/src/cp -r apr-1.6.3 /usr/src/httpd-2.4.33/srclib/aprcd apr-1.6.3./configure --prefix=/usr/local/aprmake &amp;&amp; make installcp -r apr-util-1.6.1 /usr/src/httpd-2.4.33/srclib/apr-utilcd /usr/src/apr-util-1.6.1./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/aprmake &amp;&amp; make installcd /usr/src/httpd-2.4.33./configure --with-included-apr --prefix=/usr/local/apache2 --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util --enable-so --enable-ssl --enable-rewrite --with-mpm=worker --with-suexec-bin make &amp;&amp; make install]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>Apache</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[配置Nginx反向代理FRPS服务端口]]></title>
+    <url>%2F%E9%85%8D%E7%BD%AENginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86FRPS%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%8F%A3.html</url>
+    <content type="text"><![CDATA[文章作用根据最后的效果图，我们可以看到省去了端口号访问，直接用域名访问内网中的项目，方便好记！ Nginx简介 开放源代码的高性能HTTP服务器和反向代理服务器，同时支持IMAP和POP3代理 高性能、高可用、丰富的功能模块，低资源占用 高达50000个并发连接 FRP简介 frp 是一个可用于内网穿透的高性能反向代理应用，支持 tcp, udp, http, https 协议. frp为免费且开源项目，需要自己利用一台拥有公网IP机器搭建服务端，以部署内网穿透项目。 GITHUB开源项目地址 安装Nginx 采用源码安装 安装目录： /usr/local/nginx 12345678910111213wget http://nginx.org/download/nginx-1.14.0.tar.gztar -xzf nginx-1.14.0.tar.gz -C /usr/src/yum -y install gcc pcre pcre-devel openssl \&gt; openssl-devel gd gd-devel perl perl-ExtUtils-Embedcd /usr/src/nginx-1.14.0./configure --prefix=/usr/local/nginx --with-ipv6 --with-http_ssl_module --with-http_realip_module --with-http_addition_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gzip_static_module --with-http_perl_module --with-mail \&gt; --with-mail_ssl_modulemake &amp;&amp; make install 启动脚本指令1234/usr/local/nginx/sbin/nginx #启动主程序/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf #配置文件启动主程序/usr/local/nginx/sbin/nginx -s stop #关闭主程序/usr/local/nginx/sbin/nginx -s reload #关闭主程序 配置反向代理Nginx配置文件123456789101112#FRP测试server &#123; listen 80; server_name **.***.***; # 填写你的域名 location / &#123; proxy_pass http://127.0.0.1:8088; # 填写frps的http端口 proxy_redirect http://$host/ http://$http_host/; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header Host $host; &#125;&#125; frpc的ini配置文件12345678[web01]type = httplocal_ip = 127.0.0.1local_port = 1024 #填写本机的服务端口use_encryption = falseuse_compression = truecustom_domains = **.***.*** #填写你的域名 frps的ini配置文件1#subdomain_host = **.***.*** 效果图 参考引用 frps服务端与nginx可共用80端口]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>frp</tag>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[FRP--一款很好用的内网穿透工具]]></title>
+    <url>%2F%E4%B8%80%E6%AC%BE%E5%BE%88%E5%A5%BD%E7%94%A8%E7%9A%84%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%B7%A5%E5%85%B7--FRP.html</url>
+    <content type="text"><![CDATA[一款很好用的内网穿透工具–FRP前言 对于没有公网 IP 的内网用户来说，远程管理或在外网访问内网机器上的服务是一个问题。 今天给大家介绍一款好用内网穿透工具 FRP，FRP 全名：Fast Reverse Proxy。FRP 是一个使用 Go 语言开发的高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务。FRP 支持 TCP、UDP、HTTP、HTTPS等协议类型，并且支持 Web 服务根据域名进行路由转发。 FRP 项目地址：https://github.com/fatedier/frp FRP 的作用 利用处于内网或防火墙后的机器，对外网环境提供 HTTP 或 HTTPS 服务。 对于 HTTP, HTTPS 服务支持基于域名的虚拟主机，支持自定义域名绑定，使多个域名可以共用一个 80 端口。 利用处于内网或防火墙后的机器，对外网环境提供 TCP 和 UDP 服务，例如在家里通过 SSH 访问处于公司内网环境内的主机。 FRP 安装FRP 采用 Go 语言开发，支持 Windows、Linux、MacOS、ARM等多平台部署。FRP 安装非常容易，只需下载对应系统平台的软件包，并解压就可用。 这里以 Linux 为例，为了方便管理我们把解压后的目录重命名为 frp ：123wget https://github.com/fatedier/frp/releases/download/v0.15.1/frp_0.15.1_linux_amd64.tar.gztar xzvf frp_0.15.1_linux_amd64.tar.gzmv frp_0.15.1_linux_amd64 frp 更多平台的软件包下载地址：https://github.com/fatedier/frp/releases FRP 服务端配置配置 FRP 服务端的前提条件是需要一台具有公网 IP 的设备，得益于 FRP 是 Go 语言开发的，具有良好的跨平台特性。你可以在 Windows、Linux、MacOS、ARM等几乎任何可联网设备上部署。 这里以 Linux 为例，FRP 默认给出两个服务端配置文件，一个是简版的 frps.ini，另一个是完整版本 frps_full.ini。我们先来看看简版的 frps.ini，通过这个配置可以快速的搭建起一个 FRP 服务端。 1234567891011$ cat frps.ini[common]bind_port = 7000 默认配置中监听的是 7000 端口，可根据自己实际情况修改。启动 FRP 服务端$ ./frps -c ./frps.ini2018/01/25 10:52:45 [I] [service.go:96] frps tcp listen on 0.0.0.0:70002018/01/25 10:52:45 [I] [main.go:112] Start frps success2018/01/25 10:52:45 [I] [main.go:114] PrivilegeMode is enabled, you should pay more attention to security issues 通过上面简单的两步就可以成功启动一个监听在 7000 端口的 FRP 服务端。 FRP 客户端配置和 FRP 服务端类似，FRP 默认也给出两个客户端配置文件，一个是简版的 frpc.ini，另一个是完整版本 frpc_full.ini。这里同样以简版的 frpc.ini 文件为例，假设 FRP 服务端所在服务器的公网 IP 为 4.3.2.1。1234567891011121314$ vim frpc.ini[common]# server_addr 为 FRP 服务端的公网 IPserver_addr = 4.3.2.1# server_port 为 FRP 服务端监听的端口server_port = 7000启动 FRP 客户端$ ./frpc -c ./frpc.ini2018/01/25 11:15:49 [I] [proxy_manager.go:284] proxy removed: []2018/01/25 11:15:49 [I] [proxy_manager.go:294] proxy added: []2018/01/25 11:15:49 [I] [proxy_manager.go:317] visitor removed: []2018/01/25 11:15:49 [I] [proxy_manager.go:326] visitor added: []2018/01/25 11:15:49 [I] [control.go:240] [83775d7388b8e7d9] login to server success, get run id [83775d7388b8e7d9], server udp port [0] 这样就可以成功在 FRP 服务端上成功建立一个客户端连接，当然现在还并不能对外提供任何内网机器上的服务，因为我们并还没有在 FRP 服务端注册任何内网服务的端口。 FRP 使用实例下面我们就来看几个常用的例子，通过这些例子来了解下 FRP 是如何实现内网服务穿透的。 通过 TCP 访问内网机器这里以访问 SSH 服务为例， 修改 FRP 客户端配置文件 frpc.ini 文件并增加如下内容： 123456789101112131415$ cat frpc.ini[ssh]type = tcplocal_ip = 127.0.0.1local_port = 22remote_port = 6000启动 FRP 客户端$ ./frpc -c ./frpc.ini2018/01/25 12:21:23 [I] [proxy_manager.go:284] proxy removed: []2018/01/25 12:21:23 [I] [proxy_manager.go:294] proxy added: [ssh]2018/01/25 12:21:23 [I] [proxy_manager.go:317] visitor removed: []2018/01/25 12:21:23 [I] [proxy_manager.go:326] visitor added: []2018/01/25 12:21:23 [I] [control.go:240] [3b468a55191341cb] login to server success, get run id [3b468a55191341cb], server udp port [0]2018/01/25 12:21:23 [I] [control.go:165] [3b468a55191341cb] [ssh] start proxy success 这样就在 FRP 服务端上成功注册了一个端口为 6000 的服务，接下来我们就可以通过这个端口访问内网机器上 SSH 服务，假设用户名为 mike：$ ssh -oPort=6000 mike@4.3.2.1 通过自定义域名访问部署于内网的 Web 服务有时需要在公有网络通过域名访问我们在本地环境搭建的 Web 服务，但是由于本地环境机器并没有公网 IP，无法将域名直接解析到本地的机器。现在通过 FRP 就可以很容易实现这一功能，这里以 HTTP 服务为例：首先修改 FRP 服务端配置文件，通过 vhost_http_port 参数来设置 HTTP 访问端口，这里将 HTTP 访问端口设为 8080。 123456789101112131415161718192021222324252627$ vim frps.ini[common]bind_port = 7000vhost_http_port = 8080启动 FRP 服务端$ ./frps -c ./frps.ini2018/01/25 13:33:26 [I] [service.go:96] frps tcp listen on 0.0.0.0:70002018/01/25 13:33:26 [I] [service.go:125] http service listen on 0.0.0.0:80802018/01/25 13:33:26 [I] [main.go:112] Start frps success2018/01/25 13:33:26 [I] [main.go:114] PrivilegeMode is enabled, you should pay more attention to security issues其次我们在修改 FRP 客户端配置文件并增加如下内容：$ vim frpc.ini[web]type = httplocal_port = 80custom_domains = **.***.com这里通过 local_port 和 custom_domains 参数来设置本地机器上 Web 服务对应的端口和自定义的域名，这里我们分别设置端口为 80，对应域名为 **.***.com。启动 FRP 客户端$ ./frpc -c ./frpc.ini2018/01/25 13:56:11 [I] [proxy_manager.go:284] proxy removed: []2018/01/25 13:56:11 [I] [proxy_manager.go:294] proxy added: [web ssh]2018/01/25 13:56:11 [I] [proxy_manager.go:317] visitor removed: []2018/01/25 13:56:11 [I] [proxy_manager.go:326] visitor added: []2018/01/25 13:56:11 [I] [control.go:240] [296fe9e31a551e07] login to server success, get run id [296fe9e31a551e07], server udp port [0]2018/01/25 13:56:11 [I] [control.go:165] [296fe9e31a551e07] [web] start proxy success2018/01/25 13:56:11 [I] [control.go:165] [296fe9e31a551e07] [ssh] start proxy success 最后将 .*.com 的域名 A 记录解析到 FRP 服务器的公网 IP 上，现在便可以通过 http://..com:8080 这个 URL 访问到处于内网机器上对应的 Web 服务。 HTTPS 服务配置方法类似，只需将 vhost_http_port 替换为 vhost_https_port， type 设置为 https 即可。 通过密码保护你的 Web 服务由于所有客户端共用一个 FRP 服务端的 HTTP 服务端口，任何知道你的域名和 URL 的人都能访问到你部署在内网的 Web 服务，但是在某些场景下需要确保只有限定的用户才能访问。FRP 支持通过 HTTP Basic Auth 来保护你的 Web 服务，使用户需要通过用户名和密码才能访问到你的服务。需要实现此功能主要需要在 FRP 客户端的配置文件中添加用户名和密码的设置。 123456789101112131415161718$ vim frpc.ini[web]type = httplocal_port = 80custom_domains = **.***.com## 设置认证的用户名http_user = abc## 设置认证的密码http_pwd = abc 这时访问 http://.*.com:8080 这个 URL 时就需要输入配置的用户名和密码才能访问。该功能目前仅限于 HTTP 类型的代理。 给 Web 服务增加自定义二级域名在多人同时使用一个 FRP 服务端实现 Web 服务时，通过自定义二级域名的方式来使用会更加方便。通过在 FRP 服务端的配置文件中配置 subdomain_host参数就可以启用该特性。之后在 FRP 客户端的 http、https 类型的代理中可以不配置 custom_domains，而是配置一个 subdomain 参数。然后只需要将 *.{subdomain_host} 解析到 FRP 服务端所在服务器。之后用户可以通过 subdomain 自行指定自己的 Web 服务所需要使用的二级域名，并通过 {subdomain}.{subdomain_host} 来访问自己的 Web 服务。首先我们在 FRP 服务端配置 subdomain_host 参数：123456789$ vim frps.ini[common]subdomain_host = ***.com其次在 FRP 客户端配置文件配置 subdomain 参数：$ vim frpc.ini[web]type = httplocal_port = 80subdomain = test 然后将泛域名 .com 解析到 FRP 服务端所在服务器的公网 IP 地址。FRP 服务端 和 FRP 客户端都启动成功后，通过 test.**.com 就可以访问到内网的 Web 服务。 同一个 HTTP 或 HTTPS 类型的代理中 custom_domains 和 subdomain 可以同时配置。 需要注意的是如果 FPR 服务端配置了 subdomain_host，则 custom_domains 中不能是属于 subdomain_host 的子域名或者泛域名。 修改 Host Header通常情况下 FRP 不会修改转发的任何数据。但有一些后端服务会根据 HTTP 请求 header 中的 host 字段来展现不同的网站，例如 Nginx 的虚拟主机服务，启用 host-header 的修改功能可以动态修改 HTTP 请求中的 host 字段。实现此功能只需要在 FRP 客户端配置文件中定义 host_header_rewrite 参数。1234567$ vim frpc.ini[web]type = httplocal_port = 80custom_domains = test.***.comhost_header_rewrite = dev.***.com原来 HTTP 请求中的 host 字段 test.***.com 转发到后端服务时会被替换为 dev.***.com。 该功能仅限于 HTTP 类型的代理。 URL 路由FRP 支持根据请求的 URL 路径路由转发到不同的后端服务。要实现这个功能可通过 FRP 客户端配置文件中的 locations 字段来指定。12345678910111213$ vim frpc.ini[web01]type = httplocal_port = 80custom_domains = web.***.comlocations = /[web02]type = httplocal_port = 81custom_domains = web.***.comlocations = /news,/about 按照上述的示例配置后，web.***.com 这个域名下所有以 /news 以及 /about 作为前缀的 URL 请求都会被转发到后端 web02 所在的后端服务，其余的请求会被转发到 web01 所在的后端服务。目前仅支持最大前缀匹配，之后会考虑支持正则匹配。 通过 UDP 访问内网机器DNS 查询请求通常使用 UDP 协议，FRP 支持对内网 UDP 服务的穿透，配置方式和 TCP 基本一致。这里以转发到 Google 的 DNS 查询服务器 8.8.8.8 的 UDP 端口为例。首先修改 FRP 客户端配置文件，并增加如下内容：123456$ vim frpc.ini[dns]type = udplocal_ip = 8.8.8.8local_port = 53remote_port = 6001 要转发到内网 DNS 服务器只需把 local_ip 改成对应 IP 即可。 其次重新启动 FRP 客户端：123456789$ ./frpc -c ./frpc.ini2018/01/25 14:54:17 [I] [proxy_manager.go:284] proxy removed: []2018/01/25 14:54:17 [I] [proxy_manager.go:294] proxy added: [ssh web dns]2018/01/25 14:54:17 [I] [proxy_manager.go:317] visitor removed: []2018/01/25 14:54:17 [I] [proxy_manager.go:326] visitor added: []2018/01/25 14:54:17 [I] [control.go:240] [33e1de8a771112a6] login to server success, get run id [33e1de8a771112a6], server udp port [0]2018/01/25 14:54:17 [I] [control.go:165] [33e1de8a771112a6] [ssh] start proxy success2018/01/25 14:54:17 [I] [control.go:165] [33e1de8a771112a6] [web] start proxy success2018/01/25 14:54:17 [I] [control.go:165] [33e1de8a771112a6] [dns] start proxy success 最后通过 dig 命令测试 UDP 包转发是否成功，预期会返回 www.google.com 域名的解析结果：12345678$ dig @4.3.2.1 -p 6001 www.google.com...;; QUESTION SECTION:;www.google.com. IN A;; ANSWER SECTION:www.google.com. 79 IN A 69.63.184.30 转发 Unix 域套接字通过 TCP 端口访问内网的 Unix 域套接字，这里以和本地机器上的 Docker Daemon 通信为例。首先修改 FRP 客户端配置文件，并增加如下内容： 1234567$ vim frpc.ini[unix_domain_socket]type = tcpremote_port = 6002plugin = unix_domain_socketplugin_unix_path = /var/run/docker.sock这里主要是使用 plugin 和 plugin_unix_path 两个参数启用了 unix_domain_socket 插件和配置对应的套接字路径。 其次重新启动 FRP 客户端：1234567891011$ ./frpc -c ./frpc.ini2018/01/25 15:09:33 [I] [proxy_manager.go:284] proxy removed: []2018/01/25 15:09:33 [I] [proxy_manager.go:294] proxy added: [ssh web dns unix_domain_socket]2018/01/25 15:09:33 [I] [proxy_manager.go:317] visitor removed: []2018/01/25 15:09:33 [I] [proxy_manager.go:326] visitor added: []2018/01/25 15:09:33 [I] [control.go:240] [f6424f0deb8b6ff7] login to server success, get run id [f6424f0deb8b6ff7], server udp port [0]2018/01/25 15:09:33 [I] [control.go:165] [f6424f0deb8b6ff7] [ssh] start proxy success2018/01/25 15:09:33 [I] [control.go:165] [f6424f0deb8b6ff7] [web] start proxy success2018/01/25 15:09:33 [I] [control.go:165] [f6424f0deb8b6ff7] [dns] start proxy success2018/01/25 15:09:33 [I] [control.go:165] [f6424f0deb8b6ff7] [unix_domain_socket] start proxy success 最后通过 curl 命令查看 Docker 版本信息进行测试：123$ curl http://4.3.2.1:6002/version&#123;&quot;Platform&quot;:&#123;&quot;Name&quot;:&quot;&quot;&#125;,&quot;Components&quot;:[&#123;&quot;Name&quot;:&quot;Engine&quot;,&quot;Version&quot;:&quot;17.12.0-ce&quot;,&quot;Details&quot;:&#123;&quot;ApiVersion&quot;:&quot;1.35&quot;,&quot;Arch&quot;:&quot;amd64&quot;,&quot;BuildTime&quot;:&quot;2017-12-27T20:12:29.000000000+00:00&quot;,&quot;Experimental&quot;:&quot;true&quot;,&quot;GitCommit&quot;:&quot;c97c6d6&quot;,&quot;GoVersion&quot;:&quot;go1.9.2&quot;,&quot;KernelVersion&quot;:&quot;4.9.60-linuxkit-aufs&quot;,&quot;MinAPIVersion&quot;:&quot;1.12&quot;,&quot;Os&quot;:&quot;linux&quot;&#125;&#125;],&quot;Version&quot;:&quot;17.12.0-ce&quot;,&quot;ApiVersion&quot;:&quot;1.35&quot;,&quot;MinAPIVersion&quot;:&quot;1.12&quot;,&quot;GitCommit&quot;:&quot;c97c6d6&quot;,&quot;GoVersion&quot;:&quot;go1.9.2&quot;,&quot;Os&quot;:&quot;linux&quot;,&quot;Arch&quot;:&quot;amd64&quot;,&quot;KernelVersion&quot;:&quot;4.9.60-linuxkit-aufs&quot;,&quot;Experimental&quot;:true,&quot;BuildTime&quot;:&quot;2017-12-27T20:12:29.000000000+00:00&quot;&#125; FRP 从 1.5 版本开始支持客户端热加载配置文件，并不用每次都重启客户端程序。具体方法在后文 FRP 客户端热加载配置文件部分讲解。 FRP 高级进阶给 FRP 服务端增加一个 Dashboard通过 Dashboard 可以方便的查看 FRP 的状态以及代理统计信息展示，要使用这个功能首先需要在 FRP 服务端配置文件中指定 Dashboard 服务使用的端口：1234567891011121314151617181920212223$ vim frps.ini[common]# 指定 Dashboard 的监听的 IP 地址dashboard_addr = 0.0.0.0# 指定 Dashboard 的监听的端口dashboard_port = 7500# 指定访问 Dashboard 的用户名dashboard_user = admin# 指定访问 Dashboard 的端口dashboard_pwd = admin其次重新启动 FRP 服务端：$ ./frps -c ./frps.ini2018/01/25 16:39:29 [I] [service.go:96] frps tcp listen on 0.0.0.0:70002018/01/25 16:39:29 [I] [service.go:125] http service listen on 0.0.0.0:80802018/01/25 16:39:29 [I] [service.go:164] Dashboard listen on 0.0.0.0:75002018/01/25 16:39:29 [I] [main.go:112] Start frps success2018/01/25 16:39:29 [I] [main.go:114] PrivilegeMode is enabled, you should pay more attention to security issues 最后通过 http://[server_addr]:7500 访问 Dashboard 界面，用户名密码默认都为 admin。 给 FRP 服务端加上身份验证默认情况下只要知道 FRP 服务端开放的端口，任意 FRP 客户端都可以随意在服务端上注册端口映射，这样对于在公网上的 FRP 服务来说显然不太安全。FRP 提供了身份验证机制来提高 FRP 服务端的安全性。要启用这一特性也很简单，只需在 FRP 服务端和 FRP 客户端的 common 配置中启用 privilege_token 参数就行。12[common]privilege_token = 12345678 启用这一特性后，只有 FRP 服务端和 FRP 客户端的 common 配置中的 privilege_token 参数一致身份验证才会通过，FRP 客户端才能成功在 FRP 服务端注册端口映射。否则就会注册失败，出现类似下面的错误：12345672018/01/25 17:29:27 [I] [proxy_manager.go:284] proxy removed: []2018/01/25 17:29:27 [I] [proxy_manager.go:294] proxy added: [ssh web dns unix_domain_socket]2018/01/25 17:29:27 [I] [proxy_manager.go:317] visitor removed: []2018/01/25 17:29:27 [I] [proxy_manager.go:326] visitor added: []2018/01/25 17:29:27 [E] [control.go:230] authorization failed2018/01/25 17:29:27 [W] [control.go:109] login to server failed: authorization failedauthorization failed 需要注意的是 FRP 客户端所在机器和 FRP 服务端所在机器的时间相差不能超过 15 分钟，因为时间戳会被用于加密验证中，防止报文被劫持后被其他人利用。这个超时时间可以在配置文件中通过 authentication_timeout 这个参数来修改，单位为秒，默认值为 900，即 15 分钟。如果修改为 0，则 FRP 服务端将不对身份验证报文的时间戳进行超时校验。 FRP 客户端热加载配置文件当修改了 FRP 客户端中的配置文件，从 0.15 版本开始可以通过 frpc reload 命令来动态加载配置文件，通常会在 10 秒内完成代理的更新。启用此功能需要在 FRP 客户端配置文件中启用 admin 端口，用于提供 API 服务。配置如下：$ vim frpc.ini [common]admin_addr = 127.0.0.1admin_port = 7400重启 FRP 客户端，以后就可通过热加载方式进行 FRP 客户端配置变更了。1234567891011$ ./frpc -c ./frpc.ini2018/01/25 18:04:25 [I] [proxy_manager.go:326] visitor added: []2018/01/25 18:04:25 [I] [control.go:240] [3653b9a878f8acc7] login to server success, get run id [3653b9a878f8acc7], server udp port [0]2018/01/25 18:04:25 [I] [service.go:49] admin server listen on 127.0.0.1:74002018/01/25 18:04:25 [I] [control.go:165] [3653b9a878f8acc7] [ssh] start proxy success2018/01/25 18:04:25 [I] [control.go:165] [3653b9a878f8acc7] [web] start proxy success2018/01/25 18:04:25 [I] [control.go:165] [3653b9a878f8acc7] [dns] start proxy success2018/01/25 18:04:25 [I] [control.go:165] [3653b9a878f8acc7] [unix_domain_socket] start proxy success$ ./frpc reload -c ./frpc.inireload success 等待一段时间后客户端会根据新的配置文件创建、更新、删除代理。需要注意的是 [common] 中的参数除了 start 外目前无法被修改。 启用 admin_addr 后，还可以通过 frpc status -c ./frpc.ini 命令在 FRP 客户端很方便的查看当前代理状态信息。1234567891011121314$ ./frpc status -c ./frpc.iniProxy Status...TCPName Status LocalAddr Plugin RemoteAddr Errorssh running 127.0.0.1:22 4.3.2.1:6000unix_domain_socket running unix_domain_socket 4.3.2.1:6002UDPName Status LocalAddr Plugin RemoteAddr Errordns running 8.8.8.8:53 4.3.2.1:6001HTTPName Status LocalAddr Plugin RemoteAddr Error web running 127.0.0.1:80 .*.com:8080 给 FRP 服务端增加端口白名单为了防止 FRP 端口被滥用，FRP 提供了指定允许哪些端口被分配的功能。可通过 FRP 服务端的配置文件中 privilege_allow_ports 参数来指定：1234$ vim frps.ini[common]privilege_allow_ports = 2000-3000,3001,3003,4000-5000 privilege_allow_ports 可以配置允许使用的某个指定端口或者是一个范围内的所有端口，以 , 分隔，指定的范围以 - 分隔。当使用不允许的端口注册时，就会注册失败。出现类似以下错误：123456$ ./frpc status -c ./frpc.iniProxy Status...TCPName Status LocalAddr Plugin RemoteAddr Errorssh start error 127.0.0.1:22 4.3.2.1:60000 port not allowedunix_domain_socket start error unix_domain_socket 4.3.2.1:60002 port not allowed 启用 TCP 多路复用从 v0.10.0 版本开始，客户端和服务器端之间的连接支持多路复用，不再需要为每一个用户请求创建一个连接，使连接建立的延迟降低，并且避免了大量文件描述符的占用，使 FRP 可以承载更高的并发数。该功能默认启用，如需关闭可以在 FRP 服务端配置文件和 FRP 客户端配置文件中配置，该配置项在服务端和客户端必须一致：123# frps.ini 和 frpc.ini 中[common]tcp_mux = falseFRP 底层通信启用 KCP 协议FRP 从 v0.12.0 版本开始，底层通信协议支持选择 KCP 协议，在弱网络环境下传输效率会提升明显，但是会有一些额外的流量消耗。要开启 KCP 协议支持，首先要在 FRP 服务端配置文件中启用 KCP 协议支持：12345678910111213$ vim frps.ini[common]bind_port = 7000# 指定一个 UDP 端口用于接收客户端请求 KCP 绑定的是 UDP 端口，可以和 bind_port 一样kcp_bind_port = 7000其次是在 FRP 客户端配置文件指定需要使用的协议类型，目前只支持 TCP 和 KCP。其它代理配置不需要变更：$ vim frpc.ini[common]server_addr = 4.3.2.1# server_port 指定为 FRP 服务端里 kcp_bind_port 指定的端口server_port = 7000# 指定需要使用的协议类型，默认类型为 TCPprotocol = kcp 需要注意开放相关机器上的 UDP 端口的访问权限。 给 FRP 服务端配置连接池默认情况下，当用户请求建立连接后，FRP 服务端才会请求 FRP 客户端主动与后端服务建立一个连接。当为指定的 FRP 服务端启用连接池功能后，FRP 会预先和后端服务建立起指定数量的连接，每次接收到用户请求后，会从连接池中取出一个连接和用户连接关联起来，避免了等待与后端服务建立连接以及 FRP 客户端 和 FRP 服务端之间传递控制信息的时间。首先需要在 FRP 服务端配置文件中设置每个代理可以创建的连接池上限，避免大量资源占用，客户端设置超过此配置后会被调整到当前值：12345678$ vim frps.ini[common]max_pool_count = 5其次在 FRP 客户端配置文件中为客户端启用连接池，指定预创建连接的数量：$ vim frpc.ini[common]pool_count = 1 * 此功能比较适合有大量短连接请求时开启。 加密与压缩如果公司内网防火墙对外网访问进行了流量识别与屏蔽，例如禁止了 SSH 协议等，可通过设置 use_encryption = true，将 FRP 客户端 与 FRP 服务端之间的通信内容加密传输，将会有效防止流量被拦截。如果传输的报文长度较长，通过设置 use_compression = true 对传输内容进行压缩，可以有效减小 FRP 客户端 与 FRP 服务端之间的网络流量，来加快流量转发速度，但是会额外消耗一些 CPU 资源。这两个功能默认是不开启的，需要在 FRP 客户端配置文件中通过配置来为指定的代理启用加密与压缩的功能，压缩算法使用的是 snappy。12345678$ vim frpc.ini[ssh]type = tcplocal_port = 22remote_port = 6000use_encryption = trueuse_compression = true 通过 FRP 客户端代理其它内网机器访问外网FRP 客户端内置了 http_proxy 和 socks5 插件，通过这两个插件可以使其它内网机器通过 FPR 客户端的的网络访问互联网。要启用此功能，首先需要在 FRP 客户端配置文件中启用相关插件，这里以 http_proxy 插件为例：12345678910$ vim frpc.ini[common]server_addr = 4.3.2.1server_port = 7000[http_proxy]type = tcpremote_port = 6000plugin = http_proxy 其次将需要通过这个代理访问外网的内部机器的代理地址设置为 4.3.2.1:6000，这样就可以通过 FRP 客户端机器的网络访问互联网了。http_proxy 插件也支持认证机制，如果需要启用认证可通过配置参数 plugin_http_user 和 plugin_http_passwd 启用。如需启用 Socks5 代理，只需将 plugin 的值更换为 socks5 即可。 通过代理连接 FRP 服务端在只能通过代理访问外网的环境内，FRP 客户端支持通过 HTTP_PROXY 参数来配置代理和 FRP 服务端进行通信。要使用此功能可以通过设置系统环境变量 HTTP_PROXY 或者通过在 FRP 客户端的配置文件中设置 http_proxy 参数来使用此功能。1234567$ vim frpc.ini[common]server_addr = 4.3.2.1server_port = 7000protocol = tcphttp_proxy = http://user:pwd@4.3.2.2:8080 仅在 protocol = tcp 时生效，暂时不支持 kcp 协议。 安全地暴露内网服务对于一些比较敏感的服务如果直接暴露于公网上将会存在安全隐患，FRP 也提供了一种安全的转发方式 STCP。使用 STCP (secret tcp) 类型的代理可以避免让任何人都能访问到穿透到公网的内网服务，要使用 STCP 模式访问者需要单独运行另外一个 FRP 客户端。下面就以创建一个只有自己能访问到的 SSH 服务代理为例，FRP 服务端和其它的部署步骤相同，主要区别是在 FRP 客户端上。首先配置 FRP 客户端，和常规 TCP 转发不同的是这里不需要指定远程端口。12345678910111213$ vim frpc.ini[common]server_addr = 4.3.2.1server_port = 7000[secret_ssh]type = stcp# 只有 sk 一致的用户才能访问到此服务sk = abcdefglocal_ip = 127.0.0.1local_port = 22 其次在要访问这个服务的机器上启动另外一个 FRP 客户端，配置如下：12345678910111213141516$ vim frpc.ini[common]server_addr = 4.3.2.1server_port = 7000[secret_ssh_visitor]type = stcp# STCP 的访问者role = visitor# 要访问的 STCP 代理的名字，和前面定义的相同。server_name = secret_ssh# 和前面定义的要一致sk = abcdefg# 绑定本地端口用于访问 ssh 服务bind_addr = 127.0.0.1bind_port = 6005 最后在本机启动一个 FRP 客户端，这样就可以通过本机 6005 端口对内网机器 SSH 服务进行访问，假设用户名为 mike： 12345678910$ ./frpc -c ./frpc.ini2018/01/26 15:03:24 [I] [proxy_manager.go:284] proxy removed: []2018/01/26 15:03:24 [I] [proxy_manager.go:294] proxy added: []2018/01/26 15:03:24 [I] [proxy_manager.go:317] visitor removed: []2018/01/26 15:03:24 [I] [proxy_manager.go:326] visitor added: [secret_ssh_visitor]2018/01/26 15:03:24 [I] [control.go:240] [60d2af2f68196537] login to server success, get run id [60d2af2f68196537], server udp port [0]2018/01/26 15:03:24 [I] [proxy_manager.go:235] [60d2af2f68196537] try to start visitor [secret_ssh_visitor]2018/01/26 15:03:24 [I] [proxy_manager.go:243] [secret_ssh_visitor] start visitor success$ ssh -oPort=6005 mike@127.0.0.1 点对点内网穿透在传输大量数据时如果都经过服务器中转的话，这样会对服务器端带宽压力比较大。FRP 提供了一种新的代理类型 XTCP 来解决这个问题，XTCP 模式下可以在传输大量数据时让流量不经过服务器中转。使用方式同 STCP 类似，需要在传输数据的两端都部署上 FRP 客户端上用于建立直接的连接。首先在 FRP 服务端配置上增加一个 UDP 端口用于支持该类型的客户端: 12345678910111213141516171819202122232425262728293031323334353637383940414243$ vim frps.inibind_udp_port = 7001其次配置 FRP 客户端，和常规 TCP 转发不同的是这里不需要指定远程端口。$ vim frpc.ini[common]server_addr = 4.3.2.1server_port = 7000[p2p_ssh]type = xtcp# 只有 sk 一致的用户才能访问到此服务sk = abcdefglocal_ip = 127.0.0.1local_port = 22然后在要访问这个服务的机器上启动另外一个 FRP 客户端，配置如下：$ vim frpc.ini[common]server_addr = 4.3.2.1server_port = 7000[p2p_ssh_visitor]type = xtcp# XTCP 的访问者role = visitor# 要访问的 XTCP 代理的名字server_name = p2p_sshsk = abcdefg# 绑定本地端口用于访问 ssh 服务bind_addr = 127.0.0.1bind_port = 6006最后在本机启动一个 FRP 客户端，这样就可以通过本机 6006 端口对内网机器 SSH 服务进行访问，假设用户名为 mike：$ ./frpc -c ./frpc.ini2018/01/26 16:01:52 [I] [proxy_manager.go:326] visitor added: [p2p_ssh_visitor secret_ssh_visitor]2018/01/26 16:01:52 [I] [control.go:240] [7c7e06878e11cc3c] login to server success, get run id [7c7e06878e11cc3c], server udp port [7001]2018/01/26 16:01:52 [I] [proxy_manager.go:235] [7c7e06878e11cc3c] try to start visitor [p2p_ssh_visitor]2018/01/26 16:01:52 [I] [proxy_manager.go:243] [p2p_ssh_visitor] start visitor success2018/01/26 16:01:52 [I] [proxy_manager.go:235] [7c7e06878e11cc3c] try to start visitor [secret_ssh_visitor]2018/01/26 16:01:52 [I] [proxy_manager.go:243] [secret_ssh_visitor] start visitor success$ ssh -oPort=6006 mike@127.0.0.1 目前 XTCP 模式还处于开发的初级阶段，并不能穿透所有类型的 NAT 设备，所以穿透成功率较低。穿透失败时可以尝试 STCP 的方式。 FRP 的部署安装比较简单，项目官方也没有提供相应的管理脚本。不过好在开源项目总是有网友热心提供部署和管理脚本。如果你觉得手动部署太麻烦，还可以使用. 一键安装脚本项目地址：https://github.com/clangcn/onekey-install-shell/下载一键部署脚本$ wget –no-check-certificate https://raw.githubusercontent.com/clangcn/onekey-install-shell/master/frps/install-frps.sh -O ./install-frps.sh$ chmod 700 ./install-frps.sh安装 FRP 服务端这个一键部署脚本比较好用，为了提高国内用户下载安装包速度还提供了阿里云节点的安装源。整个脚本使用起来也比较简单，对一些常用的 FRP 服务端配置参数都做了交互式选择让用户可以方便的根据自己实际情况进行选择。脚本比较贴心的一点是对默认的公网地址进行了检测，省去了手动输入的麻烦。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134$ ./install-frps.sh installPlease select frps download url:[1].aliyun (default)[2].githubEnter your choice (1, 2 or exit. default [aliyun]):---------------------------------------Your select: aliyun---------------------------------------Loading network version for frps, please wait...frps Latest release file frp_0.15.1_linux_amd64.tar.gzLoading You Server IP, please wait...You Server IP:12.34.56.78Please input your server setting:Please input frps bind_port [1-65535](Default Server Port: 5443):7000frps bind_port: 7000Please input frps vhost_http_port [1-65535](Default vhost_http_port: 80):8080frps vhost_http_port: 8080Please input frps vhost_https_port [1-65535](Default vhost_https_port: 443):frps vhost_https_port: 443Please input frps dashboard_port [1-65535](Default dashboard_port: 6443):7500frps dashboard_port: 7500Please input dashboard_user (Default: admin):frps dashboard_user: adminPlease input dashboard_pwd (Default: IY0p1bOg):adminfrps dashboard_pwd: adminPlease input privilege_token (Default: 9BqswPpd1R0TfGR5):mikefrps privilege_token: mikePlease input frps max_pool_count [1-200](Default max_pool_count: 50):frps max_pool_count: 50##### Please select log_level #####1: info (default)2: warn3: error4: debug#####################################################Enter your choice (1, 2, 3, 4 or exit. default [1]):log_level: infoPlease input frps log_max_days [1-30](Default log_max_days: 3 day):frps log_max_days: 3##### Please select log_file #####1: enable (default)2: disable#####################################################Enter your choice (1, 2 or exit. default [1]):log_file: enable##### Please select tcp_mux #####1: enable (default)2: disable#####################################################Enter your choice (1, 2 or exit. default [1]):tcp_mux: true##### Please select kcp support #####1: enable (default)2: disable#####################################################Enter your choice (1, 2 or exit. default [1]):kcp support: true============== Check your input ==============You Server IP : 12.34.56.78Bind port : 7000kcp support : truevhost http port : 8080vhost https port : 443Dashboard port : 7500Dashboard user : adminDashboard password : adminPrivilege token : miketcp_mux : trueMax Pool count : 50Log level : infoLog max days : 3Log file : enable==============================================Press any key to start...or Press Ctrl+c to cancelfrps install path:/usr/local/frpsconfig file for frps ... donedownload frps ... donedownload /etc/init.d/frps... donesetting frps boot... done+--------------------------------------------------+| Manager for Frps, Written by Clang |+--------------------------------------------------+| Intro: http://koolshare.cn/thread-65379-1-1.html |+--------------------------------------------------+Starting Frps(0.15.1)... doneFrps (pid 3325)is running.+---------------------------------------------------------+| frps for Linux Server, Written by Clang |+---------------------------------------------------------+| A tool to auto-compile &amp; install frps on Linux |+---------------------------------------------------------+| Intro: http://koolshare.cn/thread-65379-1-1.html |+---------------------------------------------------------+Congratulations, frps install completed!==============================================You Server IP : 12.34.56.78Bind port : 7000KCP support : truevhost http port : 8080vhost https port : 443Dashboard port : 7500Privilege token : miketcp_mux : trueMax Pool count : 50Log level : infoLog max days : 3Log file : enable==============================================frps Dashboard : http://12.34.56.78:7500/Dashboard user : adminDashboard password : admin 配置 FRP$ ./install-frps.sh config更新 FRP 服务端$ ./install-frps.sh update卸载 FRP 服务端$ ./install-frps.sh uninstallFRP 服务端日常管理FRP 服务端安装完成后，一键部署脚本还提供了一个日常管理 FRP 服务端的管理脚本来进行日常的启动、重启、停止等操作，非常的方便。Usage: /etc/init.d/frps {start|stop|restart|status|config|version} 参考文档 1234567http://www.google.comhttps://github.com/fatedier/frphttp://koolshare.cn/thread-65379-1-1.htmlhttps://mp.weixin.qq.com/s?__biz=MzI3MTI2NzkxMA==&amp;mid=2247485670&amp;idx=1&amp;sn=df62f2df93f112a7bc0b8d7e843bbc16&amp;chksm=eac529cfddb2a0d9b0fb22324f3eaf5cffeb8e0a56d16efb87ad97d3cca6479e96e12c68eb88&amp;mpshare=1&amp;scene=23&amp;srcid=0131VDjF0WIqduxU6j5sc9sg#rd]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>network</tag>
+        <tag>frp</tag>
+      </tags>
+  </entry>
+</search>
