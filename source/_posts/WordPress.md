@@ -39,7 +39,7 @@ docker run  --name wordpress_db -v /mysql/data:/var/lib/mysql \
 
 ```
 
-
+<!-- more --> 
 wordpress_php:
 ```
     image: wordpress:fpm-alpine

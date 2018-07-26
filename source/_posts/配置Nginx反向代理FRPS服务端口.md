@@ -1,9 +1,11 @@
 ---
-title:
-categories:
-tags:
+title: 配置Nginx反向代理FRPS服务端口
+categories: 软件
+tags: 
+- Nginx
+- frp 
 ---
-#  配置Nginx反向代理FRPS服务端口
+
 
 ##  文章作用
 
@@ -24,6 +26,7 @@ tags:
 3. [GITHUB开源项目地址](https://github.com/fatedier/frp/)
 
 
+<!-- more --> 
 ##  安装Nginx
 
 > 采用源码安装 

@@ -14,8 +14,8 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://blog.haoguangfu.cn/
 root: /
-permalink: :year/:month/:day/:title/
-#permalink: :title.html
+#permalink: :year/:month/:day/:title/
+permalink: :title.html
 permalink_defaults:
 
 #search: true
@@ -28,7 +28,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: [googleac818ce17bd146af.html,baidu_verify_SGnBSuhAaw.html]
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -80,6 +80,12 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
+
+# hexo sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
 
 #algolia:
  # appId: "TNAM0MBQO1"

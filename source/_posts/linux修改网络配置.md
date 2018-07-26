@@ -1,9 +1,11 @@
 ---
-title:
-categories:
+title: Linux修改网络配置的几种方法
+categories: 软件
 tags:
+- Linux
+- network
 ---
-# 修改网络配置
+
 
 ```
 vi /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -28,7 +30,7 @@ vi /etc/sysconfig/network-scripts/ifcfg-eth0
 service network restart重启网络服务
 
 ```
-
+<!-- more --> 
 
 CentOS7纯净版下配置网络：
 

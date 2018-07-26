@@ -23,6 +23,8 @@ Jul 03 10:09:23 host-liu systemd[1]: Unit vsftpd.service entered failed state.
 
 ```
 
+<!-- more --> 
+
 ## 分析原因
 
 1. 上网查找问题解决办法，**有人说listen改成NO**，但我的配置文件已经是NO了，所以这个方法不行，

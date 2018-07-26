@@ -1,7 +1,7 @@
 ---
-title:
-categories:
-tags:
+title: Apache服务器搭建
+categories: 软件
+tags: Apache
 ---
 # 虚拟机全新Linux用源码安装Apache
 
@@ -22,6 +22,7 @@ tags:
 ## 2. 安装软件
 
 由于我们采用了源码安装Apache，所以安装Apache Http Server 之前需要安装很多依赖软件包，可以使用yum安装。
+<!-- more --> 
 
 ```
 yum -y install gcc autoconf automake make \

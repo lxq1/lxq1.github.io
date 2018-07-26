@@ -21,7 +21,7 @@ Docker 运行在 CentOS-6.5 或更高的版本的 CentOS 上，要求系统为64
 
 ## 查询版本
 
-
+<!-- more --> 
 ```
 cat /etc/redhat-release 
 ```

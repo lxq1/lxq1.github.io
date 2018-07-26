@@ -23,6 +23,7 @@ tags:
 3. shadowsocks软件
 ## 配置
 
+<!-- more --> 
 ### github-http-socks5配置文件
 ```java
 // C:\Users\lixq\.gitconfig

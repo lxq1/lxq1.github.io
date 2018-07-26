@@ -14,14 +14,7 @@ tags:
 
 
 
-```
 
-代码块测试
-
-```
-
-
-    代码块
 
 
 ## 1. 查看当前磁盘容量
@@ -39,8 +32,7 @@ tags:
     /dev/sda1              497M  119M  379M  24% /boot
     /dev/sr0               3.5G  3.5G     0 100% /run/media/lixq/RHEL-7.0 Server.x86_64
 ```
-
-
+<!-- more -->  
 
 ## 2. 扩容VMware的磁盘容量
 

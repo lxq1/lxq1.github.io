@@ -38,6 +38,7 @@ yum install screen
 
 rpm -qa | grep screen #查看是否安装完毕
 ```
+<!-- more --> 
 
 ### 2.使用
 

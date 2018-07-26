@@ -1,6 +1,6 @@
 ---
 title: mysql学习进度1
-categories: 学习
+categories: 软件
 tags:
 - mysql
 ---
@@ -30,7 +30,7 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '';
 FLUSH PRIVILEGES; 
 ```
 
-
+<!-- more --> 
 
 
 这两天用docker搭了个mariadb碰到一些问题在此记录一下。

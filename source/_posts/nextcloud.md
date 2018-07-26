@@ -1,7 +1,7 @@
 ---
-title:
-categories:
-tags:
+title: nextcloud网盘搭建过程
+categories: 软件
+tags: nextcloud
 ---
 # nextcloud
 
@@ -71,7 +71,7 @@ nextcloud_web:
 
  	
 ```
-
+<!-- more --> 
 ## 重建文件索引
 
 ```

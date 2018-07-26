@@ -1,7 +1,7 @@
 ---
-title:
-categories:
-tags:
+title: 安装centos系统
+categories: 软件
+tags: centos
 ---
 # 安装centOS
 

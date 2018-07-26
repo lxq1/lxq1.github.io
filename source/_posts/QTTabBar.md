@@ -1,7 +1,9 @@
 ---
-title:
-categories:
+title: QTTabBar出现的错误
+categories: 软件
 tags:
+ - error
+ - QTTabBar
 ---
 
 # QTTabBar
@@ -15,6 +17,7 @@ tags:
 ## 分析问题
 
 * 想起之前因为小飞机代理的问题，重置过IE的设置，猜测是因为加载项不安全，没有被IE信任而无法加载。
+<!-- more --> 
 
 ## 解决问题
 

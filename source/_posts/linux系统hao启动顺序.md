@@ -3,7 +3,6 @@ layout: post
 title: linux系统hao启动顺序
 categories: 
   - 软件
- 
 tags:
   - linux
   - hao
